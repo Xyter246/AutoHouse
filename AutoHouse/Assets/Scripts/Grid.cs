@@ -29,22 +29,46 @@ public class Grid
         } // Create the lines of the Grid
         Debug.DrawLine(GetWorldPosition(0, height), GetWorldPosition(width, height), Color.white, 100f);
         Debug.DrawLine(GetWorldPosition(width, 0), GetWorldPosition(width, height), Color.white, 100f);
-
-        SetValue(2, 1, 56);
     }
     
     // Create vector for Grid numbers
     private Vector3 GetWorldPosition(int x, int y) {
         return new Vector3(x, y) * cellSize;
     }
-        // Set a Value
+
+    private void GetXY(Vector3 worldPosition, out int x, out int y) {
+        x = Mathf.FloorToInt(worldPosition.x / cellSize);
+        y = Mathf.FloorToInt(worldPosition.y / cellSize);
+    }
+
+    // Set a Value of a grid position using C#
     public void SetValue(int x, int y, int value){
         if (x >= 0 && y >= 0 && x < width && y < height)
         {
             gridArray[x, y] = value;
             debugTextArray[x, y].text = gridArray[x, y].ToString();
         }
+    }
+    
+    // Set a value of a grid position using Mouse CLick
+    public void SetValue(Vector3 worldPosition, int value) {
+        int x, y;
+        GetXY(worldPosition, out x, out y);
+        SetValue(x, y, value);
+    }
 
+    // Get a value of a grid position using C#
+    public int GetValue(int x, int y) {
+        if (x >= 0 && y >= 0 && x < width && y < height) {
+            return gridArray[x, y];
+        } else {
+            return 0;
+        }
+    }
+    public int GetValue(Vector3 worldPosition) {
+        int x, y;
+        GetXY(worldPosition, out x, out y);
+        return GetValue(x, y);
     }
 }
 
