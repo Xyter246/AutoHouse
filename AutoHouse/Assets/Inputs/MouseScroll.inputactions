@@ -1,0 +1,34 @@
+{
+    "name": "MouseScroll",
+    "maps": [
+        {
+            "name": "Zoom",
+            "id": "f3bd6a67-4e60-47e4-a147-9295ffa3e199",
+            "actions": [
+                {
+                    "name": "MouseScrollY",
+                    "type": "PassThrough",
+                    "id": "4bd1a2f1-b222-47d0-bbf7-161cc76c6c7f",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "30390336-ed98-4ada-bcb7-23e59e5adc90",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseScrollY",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
