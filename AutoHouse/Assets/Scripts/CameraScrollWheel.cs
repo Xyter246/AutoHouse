@@ -5,31 +5,23 @@ using UnityEngine.InputSystem;
 
 public class CameraScrollWheel : MonoBehaviour
 {
-    DefaultControl defaultControl;
-    float mouseScrollY;
+    [SerializeField] private float ScrollSpeed = 10f;
+    private Camera ZoomCamera;
 
-    private void Awake() {
-        defaultControl = new DefaultControl();
-        defaultControl.Zoom.mouseScrollY.performed += x => mouseScrollY = x.ReadValue<float>();
+    private void Start() {
+        ZoomCamera = Camera.main;
     }
-
-    void Update() {
-        if (mouseScrollY > 0) {
-            Debug.Log("Scrolled Up!");
+    
+    private void Update(){
+        if (ZoomCamera.orthographicSize >= 15f || ZoomCamera.orthographicSize <= 70f)
+        {
+            ZoomCamera.orthographicSize -= Input.GetAxis("Mouse ScrollWheel") * ScrollSpeed;   
         }
-
-        if (mouseScrollY < 0) {
-            Debug.Log("Scrolled Down!");
+        if (ZoomCamera.orthographicSize < 15f) {
+            Debug.Log("Below Allowed Zoom!");
+        }
+        if (ZoomCamera.orthographicSize < 70f) {
+            Debug.Log("Above Allowed Zoom!");
         }
     }
-
-    #region - Enable / Disable -
-        void OnEnable() {
-            defaultControl.Enable();
-        }
-
-        void OnDisable() {
-            defaultControl.Disable();
-        }
-    #endregion
 }
