@@ -9,12 +9,12 @@ public class Testing : MonoBehaviour {
 
     [SerializeField] int gridWidth = 4;
     [SerializeField] int gridHeight = 2;
-    [SerializeField] float cellSize = 2f;
+    [SerializeField] float cellSize = 1f;
     public int placeObject = 1;
 
     private void Start() {
-      //grid = new Grid<int>(gridWidth, gridHeight, cellSize, originPosition,    gridObject)
-        grid = new Grid<int>(gridWidth, gridHeight, cellSize, new Vector3(5, 0));
+      //grid = new Grid<int>(gridWidth, gridHeight, cellSize, originPosition)
+        grid = new Grid<int>(gridWidth, gridHeight, cellSize, new Vector3(-2, -4));
     }
 
     private void Update() {

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CodeMonkey.Utils;
+using UnityEditor.Experimental.GraphView;
 
 public class Grid<TGridObject> {
     private int width;
@@ -16,6 +17,7 @@ public class Grid<TGridObject> {
         this.height = height;
         this.cellSize = cellSize;
         this.originPosition = originPosition;
+        int fontSize = 10;
 
         gridArray = new TGridObject [width, height];
 
@@ -26,7 +28,7 @@ public class Grid<TGridObject> {
         // Create the Grid with numbers
         for (int x = 0; x < gridArray.GetLength(0); x++) {
             for (int y = 0; y < gridArray.GetLength(1); y++) {
-                debugTextArray[x, y] = UtilsClass.CreateWorldText(gridArray[x, y].ToString(), null, GetWorldPosition(x, y) + new Vector3(cellSize, cellSize) * 0.5f, 20 /* <-- int font size */, Color.white, TextAnchor.MiddleCenter);
+                debugTextArray[x, y] = UtilsClass.CreateWorldText(gridArray[x, y].ToString(), null, GetWorldPosition(x, y) + new Vector3(cellSize, cellSize) * 0.5f, fontSize, Color.white, TextAnchor.MiddleCenter);
                 Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x, y + 1), Color.white, 100f);
                 Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x + 1, y), Color.white, 100f);
             }

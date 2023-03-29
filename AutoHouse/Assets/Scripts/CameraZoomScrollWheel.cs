@@ -5,8 +5,8 @@ using UnityEngine;
 public class CameraZoomScrollWheel : MonoBehaviour
 {
     [SerializeField] private float ScrollSpeed = 10f;
-    [SerializeField] private float minZoom = 15f;
-    [SerializeField] private float maxZoom = 50f;
+    [SerializeField] private float minZoom = 5f;
+    [SerializeField] private float maxZoom = 30f;
     private Camera ZoomCamera;
 
     private void Start() {
@@ -19,13 +19,15 @@ public class CameraZoomScrollWheel : MonoBehaviour
             if (ZoomCamera.orthographicSize >= minZoom && ZoomCamera.orthographicSize <= maxZoom) {
                 ZoomCamera.orthographicSize -= Input.GetAxis("Mouse ScrollWheel") * ScrollSpeed;
             }
-        }
-        // Set a maximum and minimum zoom distance
-        if (ZoomCamera.orthographicSize < minZoom) {
-            ZoomCamera.orthographicSize = minZoom;
-        } 
-        if (ZoomCamera.orthographicSize > maxZoom) {
-            ZoomCamera.orthographicSize = maxZoom;
+            // Set a maximum and minimum zoom distance
+            if (ZoomCamera.orthographicSize < minZoom)
+            {
+                ZoomCamera.orthographicSize = minZoom;
+            }
+            if (ZoomCamera.orthographicSize > maxZoom)
+            {
+                ZoomCamera.orthographicSize = maxZoom;
+            }
         }
     }
 }
