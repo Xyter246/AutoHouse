@@ -7,14 +7,14 @@ public class Testing : MonoBehaviour {
 
     private Grid<int> grid;
 
-    [SerializeField] int gridWidth = 4;
-    [SerializeField] int gridHeight = 2;
+    [SerializeField] int gridWidth = 423;
+    [SerializeField] int gridHeight = 307;
     [SerializeField] float cellSize = 1f;
-    public int placeObject = 1;
+    public int placeObject = 10;
 
     private void Start() {
       //grid = new Grid<int>(gridWidth, gridHeight, cellSize, originPosition)
-        grid = new Grid<int>(gridWidth, gridHeight, cellSize, new Vector3(-2, -4));
+        grid = new Grid<int>(gridWidth, gridHeight, cellSize, new Vector3(-199, -151));
     }
 
     private void Update() {

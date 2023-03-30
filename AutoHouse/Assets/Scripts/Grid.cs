@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CodeMonkey.Utils;
-using UnityEditor.Experimental.GraphView;
+using UnityEngine.Tilemaps;
 
 public class Grid<TGridObject> {
     private int width;
@@ -18,6 +18,7 @@ public class Grid<TGridObject> {
         this.cellSize = cellSize;
         this.originPosition = originPosition;
         int fontSize = 10;
+     //   int deadGridCell = -1;
 
         gridArray = new TGridObject [width, height];
 
@@ -31,8 +32,14 @@ public class Grid<TGridObject> {
                 debugTextArray[x, y] = UtilsClass.CreateWorldText(gridArray[x, y].ToString(), null, GetWorldPosition(x, y) + new Vector3(cellSize, cellSize) * 0.5f, fontSize, Color.white, TextAnchor.MiddleCenter);
                 Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x, y + 1), Color.white, 100f);
                 Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x + 1, y), Color.white, 100f);
+                // Change unbuildable grid tiles to '1'
+   /*             if (!Tilemap.GetSprite(GetWorldPosition(x, y).x, GetWorldPosition(x, y).y, new Vector3(0, 0, 0)) == null) {
+                   SetValue(x, y);
+                }
+   */
             }
-        } // Create the top and right-most lines of the Grid
+        }
+        // Create the top and right-most lines of the Grid
         Debug.DrawLine(GetWorldPosition(0, height), GetWorldPosition(width, height), Color.white, 100f);
         Debug.DrawLine(GetWorldPosition(width, 0), GetWorldPosition(width, height), Color.white, 100f);
         }
