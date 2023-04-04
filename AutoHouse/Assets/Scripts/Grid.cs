@@ -3,85 +3,115 @@ using System.Collections.Generic;
 using UnityEngine;
 using CodeMonkey.Utils;
 using UnityEngine.Tilemaps;
+using System;
 
-public class Grid<TGridObject> {
+public class Grid<TGridObject> : MonoBehaviour {
     private int width;
     private int height;
     private float cellSize;
     private Vector3 originPosition;
-    private TGridObject[,] gridArray;
+    public TGridObject[,] gridArray;
     private TextMesh[,] debugTextArray;
 
-    public Grid(int width, int height, float cellSize, Vector3 originPosition) {
+
+    public Grid(int width, int height, float cellSize, Vector3 originPosition)
+    {
         this.width = width;
         this.height = height;
         this.cellSize = cellSize;
         this.originPosition = originPosition;
-        int fontSize = 10;
-     //   int deadGridCell = -1;
+        int fontSize = 6;
 
-        gridArray = new TGridObject [width, height];
+        gridArray = new TGridObject[width, height];
 
         bool showDebug = true;
         if (showDebug) {
-        debugTextArray = new TextMesh[width, height];
-
-        // Create the Grid with numbers
-        for (int x = 0; x < gridArray.GetLength(0); x++) {
-            for (int y = 0; y < gridArray.GetLength(1); y++) {
-                debugTextArray[x, y] = UtilsClass.CreateWorldText(gridArray[x, y].ToString(), null, GetWorldPosition(x, y) + new Vector3(cellSize, cellSize) * 0.5f, fontSize, Color.white, TextAnchor.MiddleCenter);
-                Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x, y + 1), Color.white, 100f);
-                Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x + 1, y), Color.white, 100f);
-                // Change unbuildable grid tiles to '1'
-   /*             if (!Tilemap.GetSprite(GetWorldPosition(x, y).x, GetWorldPosition(x, y).y, new Vector3(0, 0, 0)) == null) {
-                   SetValue(x, y);
-                }
-   */
-            }
-        }
-        // Create the top and right-most lines of the Grid
-        Debug.DrawLine(GetWorldPosition(0, height), GetWorldPosition(width, height), Color.white, 100f);
-        Debug.DrawLine(GetWorldPosition(width, 0), GetWorldPosition(width, height), Color.white, 100f);
+            // Create the Debug Grid
+            debugTextArray = new TextMesh[width, height];
+            drawGrid(cellSize, fontSize);
         }
     }
-    
+
+    private void drawGrid(float cellSize, int fontSize) {
+        for (int x = 0; x < gridArray.GetLength(0); x++) {
+            for (int y = 0; y < gridArray.GetLength(1); y++) {
+                // Debug number placement
+                debugTextArray[x, y] = UtilsClass.CreateWorldText(gridArray[x, y].ToString(), null, GetWorldPosition(x, y) + new Vector3(cellSize, cellSize) * 0.5f, fontSize, Color.white, TextAnchor.MiddleCenter);
+
+                // Debug lines left and bottom
+                Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x, y + 1), Color.white, 100f);
+                Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x + 1, y), Color.white, 100f);
+                // Create the top and right-most lines of the Grid
+                Debug.DrawLine(GetWorldPosition(0, height), GetWorldPosition(width, height), Color.white, 100f);
+                Debug.DrawLine(GetWorldPosition(width, 0), GetWorldPosition(width, height), Color.white, 100f);
+                if (!testInvalidGrid(x, y))
+                {
+                    gridArray[x, y] = 0;
+                    debugTextArray[x, y].text = gridArray[x, y].ToString();
+                }
+                else
+                {
+                    gridArray[x, y] = 1;
+                }
+                debugTextArray[x, y].text = gridArray[x, y].ToString(); 
+            }
+        }
+    }
+    public bool testInvalidGrid(int x, int y)
+    {
+        Vector3Int position = Vector3Int.FloorToInt(GetWorldPosition(x, y));
+        if (TestingGrid.TileMap.GetSprite(position) == null)
+        {
+            return true;
+        } 
+        return false;
+    }
+
+
     // Create vector for Grid numbers
-    private Vector3 GetWorldPosition(int x, int y) {
+    public Vector3 GetWorldPosition(int x, int y)
+    {
         return new Vector3(x, y) * cellSize + originPosition;
     }
 
-    private void GetXY(Vector3 worldPosition, out int x, out int y) {
+    private void GetXY(Vector3 worldPosition, out int x, out int y)
+    {
         x = Mathf.FloorToInt((worldPosition - originPosition).x / cellSize);
         y = Mathf.FloorToInt((worldPosition - originPosition).y / cellSize);
     }
 
     // Set a Value of a grid position using C#
-    public void SetValue(int x, int y, TGridObject value){
-        if (x >= 0 && y >= 0 && x < width && y < height) {
+    public void SetValue(int x, int y, TGridObject value)
+    {
+        if (x >= 0 && y >= 0 && x < width && y < height)
+        {
             gridArray[x, y] = value;
             debugTextArray[x, y].text = gridArray[x, y].ToString();
         }
     }
-    
+
     // Set a value of a grid position using Mouse CLick
-    public void SetValue(Vector3 worldPosition, TGridObject value) {
+    public void SetValue(Vector3 worldPosition, TGridObject value)
+    {
         int x, y;
         GetXY(worldPosition, out x, out y);
         SetValue(x, y, value);
     }
 
     // Get a value of a grid position using C#
-    public TGridObject GetValue(int x, int y) {
+    public TGridObject GetValue(int x, int y)
+    {
         if (x >= 0 && y >= 0 && x < width && y < height) {
             return gridArray[x, y];
-        } else {
+        }
+        else {
             return default(TGridObject);
         }
     }
-    public TGridObject GetValue(Vector3 worldPosition) {
+    public TGridObject GetValue(Vector3 worldPosition)
+    {
         int x, y;
         GetXY(worldPosition, out x, out y);
         return GetValue(x, y);
     }
 }
-
