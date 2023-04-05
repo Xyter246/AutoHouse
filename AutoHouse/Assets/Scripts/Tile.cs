@@ -12,6 +12,15 @@ public class Tile : MonoBehaviour
         _renderer.color = isOffset ? _offsetColor : _baseColor;
     }
 
+    private void OnMouseDown()
+    {
+        GridManager gridManager = new GridManager();
+        Vector2 mousePosition = gridManager.GetMousePosition();
+        Debug.Log("X: " + mousePosition.x + ", Y: " + mousePosition.y);
+        gridManager.GetTileAtPosition(mousePosition);
+    }
+
+    #region "Highlighting Tiles"
     void OnMouseEnter()
     {
         _highlight.SetActive(true);
@@ -21,4 +30,5 @@ public class Tile : MonoBehaviour
     {
         _highlight.SetActive(false);
     }
+    #endregion
 }
