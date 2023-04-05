@@ -4,14 +4,16 @@ using UnityEngine;
 using CodeMonkey.Utils;
 using UnityEngine.Tilemaps;
 using System;
+using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 
-public class Grid<TGridObject> : MonoBehaviour {
+public class Grid<TGridObject> {
     private int width;
     private int height;
     private float cellSize;
     private Vector3 originPosition;
     public TGridObject[,] gridArray;
-    private TextMesh[,] debugTextArray;
+    public TextMesh[,] debugTextArray;
 
 
     public Grid(int width, int height, float cellSize, Vector3 originPosition)
@@ -39,35 +41,15 @@ public class Grid<TGridObject> : MonoBehaviour {
                 debugTextArray[x, y] = UtilsClass.CreateWorldText(gridArray[x, y].ToString(), null, GetWorldPosition(x, y) + new Vector3(cellSize, cellSize) * 0.5f, fontSize, Color.white, TextAnchor.MiddleCenter);
 
                 // Debug lines left and bottom
-                Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x, y + 1), Color.white, 100f);
-                Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x + 1, y), Color.white, 100f);
+                Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x, y + 1), Color.white);
+                Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x + 1, y), Color.white);
                 // Create the top and right-most lines of the Grid
-                Debug.DrawLine(GetWorldPosition(0, height), GetWorldPosition(width, height), Color.white, 100f);
-                Debug.DrawLine(GetWorldPosition(width, 0), GetWorldPosition(width, height), Color.white, 100f);
-                if (!testInvalidGrid(x, y))
-                {
-                    gridArray[x, y] = 0;
-                    debugTextArray[x, y].text = gridArray[x, y].ToString();
-                }
-                else
-                {
-                    gridArray[x, y] = 1;
-                }
-                debugTextArray[x, y].text = gridArray[x, y].ToString(); 
+                Debug.DrawLine(GetWorldPosition(0, height), GetWorldPosition(width, height), Color.white);
+                Debug.DrawLine(GetWorldPosition(width, 0), GetWorldPosition(width, height), Color.white);
             }
         }
     }
-    public bool testInvalidGrid(int x, int y)
-    {
-        Vector3Int position = Vector3Int.FloorToInt(GetWorldPosition(x, y));
-        if (TestingGrid.TileMap.GetSprite(position) == null)
-        {
-            return true;
-        } 
-        return false;
-    }
-
-
+    
     // Create vector for Grid numbers
     public Vector3 GetWorldPosition(int x, int y)
     {
