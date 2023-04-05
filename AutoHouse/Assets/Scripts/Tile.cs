@@ -17,7 +17,7 @@ public class Tile : MonoBehaviour
     {
         Vector2 mousePosition = gridManager.GetMousePosition();
         Debug.Log("X: " + mousePosition.x + ", Y: " + mousePosition.y);
-        gridManager.GetTileAtPosition(mousePosition);
+    //    gridManager.GetTileAtPosition(mousePosition);
     }
 
     #region "Highlighting Tiles"
