@@ -3,23 +3,17 @@ using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour 
 {
     [SerializeField] private static Tile _selectedBuildingType;
+
     public Tile SelectedBuildingType
     {
-        get
-        {
+        get {
             return _selectedBuildingType;
         }
-        set
-        {
+        set {
             _selectedBuildingType = value;
         }
-    }
-
-    private void Update()
-    {
-        
     }
 }

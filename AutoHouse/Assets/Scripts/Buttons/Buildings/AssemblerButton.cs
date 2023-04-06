@@ -8,7 +8,6 @@ public class AssemblerButton : GameManager
 
     public void OnClick()
     {
-        Debug.Log("Button Pressed!");
         SelectedBuildingType = _buildingType;
     }
 }

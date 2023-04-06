@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &7687343142310087018
+--- !u!1001 &587502960967416376
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,10 +10,10 @@ PrefabInstance:
     - target: {fileID: 3794919856798827831, guid: f4ee5bbdb6df78b40acd715f6c828c8e, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: f3caafecbc096fa4c9dfe5dd0d2cd835, type: 3}
+      objectReference: {fileID: 21300000, guid: 6b5d77d51c29e694890913ac2464be63, type: 3}
     - target: {fileID: 5759495260422937521, guid: f4ee5bbdb6df78b40acd715f6c828c8e, type: 3}
       propertyPath: m_Name
-      value: Stone Tile
+      value: Miner Tile
       objectReference: {fileID: 0}
     - target: {fileID: 6805440298661292512, guid: f4ee5bbdb6df78b40acd715f6c828c8e, type: 3}
       propertyPath: m_RootOrder
@@ -61,3 +61,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4ee5bbdb6df78b40acd715f6c828c8e, type: 3}
+--- !u!1 &302366930544672178 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 870606275560556426, guid: f4ee5bbdb6df78b40acd715f6c828c8e, type: 3}
+  m_PrefabInstance: {fileID: 587502960967416376}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &4363277017075023631 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3794919856798827831, guid: f4ee5bbdb6df78b40acd715f6c828c8e, type: 3}
+  m_PrefabInstance: {fileID: 587502960967416376}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5173207397409087881 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5759495260422937521, guid: f4ee5bbdb6df78b40acd715f6c828c8e, type: 3}
+  m_PrefabInstance: {fileID: 587502960967416376}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3392867595197031624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5173207397409087881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2faf6b2f40593bd4baa25d953c390c54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderer: {fileID: 4363277017075023631}
+  _highlight: {fileID: 302366930544672178}
+  _replaceTile: {fileID: 7471173326427057435, guid: d31c08251077b014c9db1b6a1878215b, type: 3}
