@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 public class GridManager : MonoBehaviour
 {
     [SerializeField] private int _width, _height;
-    [SerializeField] private Tile _tilePrefab;
+    [SerializeField] private Tile _grassTilePrefab;
     [SerializeField] private Transform _player;
     private Dictionary<Vector2, Tile> _tiles;
 
@@ -22,11 +22,11 @@ public class GridManager : MonoBehaviour
         for (int x = 0; x < _width; x++) {
             for (int y = 0; y < _height; y++) {
                 // Create the corresponding Tile with name...
-                var spawnedTile = Instantiate(_tilePrefab, new Vector3(x, y), Quaternion.identity);
+                var spawnedTile = Instantiate(_grassTilePrefab, new Vector3(x, y), Quaternion.identity);
                 spawnedTile.name = $"Tile {x} {y}";
                 // ... and color
-                var isOffset = (x % 2 == 0 && y % 2 != 0) || (x % 2 != 0 && y % 2 == 0);
-                spawnedTile.Init(isOffset);
+                
+                spawnedTile.Init(x, y);
 
                 // Add tile to Dictionary
                 _tiles[new Vector2(x, y)] = spawnedTile;

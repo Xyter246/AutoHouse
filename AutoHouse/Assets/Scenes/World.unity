@@ -277,7 +277,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.6334343
+  orthographic size: 4
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
@@ -464,7 +464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8e3473bc1e31b04fa2672d3a0c87fe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _width: 24
-  _height: 18
-  _tilePrefab: {fileID: 1084452509141863783, guid: f4ee5bbdb6df78b40acd715f6c828c8e, type: 3}
+  _width: 16
+  _height: 9
+  _grassTilePrefab: {fileID: 7471173326427057435, guid: d31c08251077b014c9db1b6a1878215b, type: 3}
   _player: {fileID: 189052566}

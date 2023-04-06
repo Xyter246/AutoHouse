@@ -2,23 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tile : MonoBehaviour
+public abstract class Tile : MonoBehaviour
 {
-    [SerializeField] private Color _baseColor, _offsetColor;
-    [SerializeField] private SpriteRenderer _renderer;
+    [SerializeField] protected SpriteRenderer _renderer;
     [SerializeField] private GameObject _highlight;
-    GridManager gridManager = new GridManager();
+    protected GridManager gridManager = new GridManager();
 
-    public void Init(bool isOffset) {
-        _renderer.color = isOffset ? _offsetColor : _baseColor;
+    public virtual void Init(int x, int y)
+    {
+        
     }
 
-    private void OnMouseDown()
+    protected void OnMouseDown()
     {
         Vector2 mousePosition = gridManager.GetMousePosition();
         Debug.Log("X: " + mousePosition.x + ", Y: " + mousePosition.y);
-    //    gridManager.GetTileAtPosition(mousePosition);
+
     }
+
+    // public string Building() { get; set; }
 
     #region "Highlighting Tiles"
     void OnMouseEnter()
