@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Tile : MonoBehaviour
+public abstract class Tile : GameManager
 {
     [SerializeField] protected SpriteRenderer _renderer;
     [SerializeField] private GameObject _highlight;
     protected GridManager gridManager = new GridManager();
 
+
     public virtual void Init(int x, int y)
     {
-        
     }
 
     protected void OnMouseDown()
@@ -19,8 +19,6 @@ public abstract class Tile : MonoBehaviour
         Debug.Log("X: " + mousePosition.x + ", Y: " + mousePosition.y);
 
     }
-
-    // public string Building() { get; set; }
 
     #region "Highlighting Tiles"
     void OnMouseEnter()

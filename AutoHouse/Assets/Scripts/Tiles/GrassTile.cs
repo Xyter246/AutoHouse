@@ -5,8 +5,6 @@ using UnityEngine;
 public class GrassTile : Tile
 {
     [SerializeField] private Color _baseColor, _offsetColor;
-    [SerializeField] private Tile _SelectedBuildingType;
-
 
     public override void Init(int x, int y)
     {
@@ -15,9 +13,11 @@ public class GrassTile : Tile
     }
     new private void OnMouseDown()
     {
-        Vector2 mousePosition = gridManager.GetMousePosition();
-        Debug.Log("X: " + mousePosition.x + ", Y: " + mousePosition.y);
-        Destroy(gameObject);
-        Instantiate(_SelectedBuildingType, transform.position, Quaternion.identity);
+        if (SelectedBuildingType != null) {
+            Vector2 mousePosition = gridManager.GetMousePosition();
+            Debug.Log("X: " + mousePosition.x + ", Y: " + mousePosition.y);
+            Destroy(gameObject);
+            Instantiate(SelectedBuildingType, transform.position, Quaternion.identity);
+        }
     }
 }
