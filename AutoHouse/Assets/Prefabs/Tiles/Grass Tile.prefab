@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ddd08e90d831904da388849dcb36df5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _selectedBuildingType: {fileID: 8990001317196820111, guid: a8590dbc52cbe5a479d6717c3ffc978c, type: 3}
+  _selectedBuildingType: {fileID: 7678172430716087858, guid: c57bb0f06a1f08c479337f423be719e4, type: 3}
   _renderer: {fileID: 1114906297908018197}
   _highlight: {fileID: 4019375899042807464}
   _baseColor: {r: 0.49019608, g: 0.7411765, b: 0.36862746, a: 1}

@@ -8,7 +8,6 @@ public abstract class Tile : GameManager
     [SerializeField] private GameObject _highlight;
     protected GridManager gridManager = new GridManager();
 
-
     public virtual void Init(int x, int y)
     {
     }

@@ -88,6 +88,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb0dca3102b1f0c4287781720614d8bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _selectedBuildingType: {fileID: 0}
+  _selectedBuildingType: {fileID: 7678172430716087858}
   _renderer: {fileID: 1151417268729071248}
   _highlight: {fileID: 3982844173937640493}

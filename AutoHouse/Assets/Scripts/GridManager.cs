@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class GridManager : GameManager
+public class GridManager : MonoBehaviour
 {
     [SerializeField] private int _width, _height;
     [SerializeField] private Tile _grassTilePrefab;
     [SerializeField] private Transform _player;
-    private Dictionary<Vector2, Tile> _tiles; 
+    private Dictionary<Vector2, Tile> _tiles;
 
     private void Start()
     {

@@ -5,15 +5,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private Tile _selectedBuildingType;
-
+    [SerializeField] private static Tile _selectedBuildingType;
     public Tile SelectedBuildingType
     {
         get
         {
             return _selectedBuildingType;
         }
-        protected set
+        set
         {
             _selectedBuildingType = value;
         }
@@ -21,6 +20,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Tile is: " + SelectedBuildingType);
+        
     }
 }

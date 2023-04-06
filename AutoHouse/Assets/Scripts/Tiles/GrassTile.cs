@@ -11,6 +11,7 @@ public class GrassTile : Tile
         var isOffset = (x + y) % 2 == 1;
         _renderer.color = isOffset ? _offsetColor : _baseColor;
     }
+
     new private void OnMouseDown()
     {
         if (SelectedBuildingType != null) {
