@@ -35,6 +35,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Assembler Tile
       objectReference: {fileID: 0}
+    - target: {fileID: 5759495260422937521, guid: f4ee5bbdb6df78b40acd715f6c828c8e, type: 3}
+      propertyPath: m_TagString
+      value: Buildings
+      objectReference: {fileID: 0}
     - target: {fileID: 6805440298661292512, guid: f4ee5bbdb6df78b40acd715f6c828c8e, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -117,5 +121,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _renderer: {fileID: 749390319930869626}
-  _highlight: {fileID: 3663993641217148359}
   _replaceTile: {fileID: 7471173326427057435, guid: d31c08251077b014c9db1b6a1878215b, type: 3}
+  _highlight: {fileID: 3663993641217148359}

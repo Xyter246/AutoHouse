@@ -4,25 +4,14 @@ using UnityEngine;
 
 public class ResourceTile : Tile {
     
-    public override void OnMouseDown()
+    new protected void OnMouseDown()
     {   // Only execute if not over UI
-        if (!Functions.IsCursorOverUIObject()) {
-            if (SelectedBuildingType.CompareTag("Resources")) {
-                Debug.Log("The tag for this GameObject is" + gameObject.tag);
-                Instantiate(SelectedBuildingType, transform.position, Quaternion.identity);
-            } else {
-                Debug.Log("Can't Find Tag!");
-            }          
-        }
-    }
-
-    new private void OnMouseOver()
-    {   // Only execute if not over UI
-        if (!Functions.IsCursorOverUIObject()) {
-            // On RMB, then destroy object and replace with replaceobject (standard is grass)
-            if (Input.GetKey(KeyCode.Mouse1)) {
-                Destroy(gameObject);
-            }
+        if (!Functions.IsCursorOverUIObject() && SelectedBuildingType == SelectedBuildingType.CompareTag("MinerTile")) {
+            // if Miner is selected, only then place the SelectedBuildingType
+            Debug.Log("Should exclusively place Miner on Resource Tiles");
+            Instantiate(SelectedBuildingType, new Vector3(transform.position.x, transform.position.y, -1), Quaternion.identity);
+        } else {
+            Debug.Log("Not A Suitable Location! (Miners Only)");
         }
     }
 }

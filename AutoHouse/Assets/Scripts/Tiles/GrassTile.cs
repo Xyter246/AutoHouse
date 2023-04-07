@@ -21,13 +21,17 @@ public class GrassTile : Tile
     }
 
     #region "Mouse Interactions"
-    public override void OnMouseDown()
+    protected override void OnMouseDown()
     {   // Only execute if not over UI
         if (!Functions.IsCursorOverUIObject()) {
-            if (SelectedBuildingType != null /*&& SelectedBuildingType != MinerTile*/)
-            {
-                Destroy(gameObject);
-                Instantiate(SelectedBuildingType, transform.position, Quaternion.identity);
+            // If you click on (open) grass tile, place SelectedBuildingType on that location
+            if (SelectedBuildingType != null) {
+                if (SelectedBuildingType != SelectedBuildingType.CompareTag("MinerTile")) {
+                    Destroy(gameObject);
+                    Instantiate(SelectedBuildingType, transform.position, Quaternion.identity);
+                } else {
+                    Debug.Log("Not A Suitable Location! (Miners Can't Go On Grass)");
+                }
             }
         }
     }

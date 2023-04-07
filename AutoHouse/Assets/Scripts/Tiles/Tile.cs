@@ -19,18 +19,21 @@ public abstract class Tile : GameManager
         if (!Functions.IsCursorOverUIObject()) {
             // On RMB, then destroy object and replace with replaceobject (standard is grass)
             if (Input.GetKey(KeyCode.Mouse1)) {
+                // Destroy selected gameObject
                 Destroy(gameObject);
+
+                // Make a replace tile (grass) and name it accordingly "Tile [x] [y]"
                 _replaceTile.name = $"Tile {Functions.GetMousePosition().x} {Functions.GetMousePosition().y}";
                 Instantiate(_replaceTile, transform.position, Quaternion.identity);
             }
         }
     }
 
-    public virtual void OnMouseDown()
+    protected virtual void OnMouseDown()
     {   // Only execute if not over UI
         if (!Functions.IsCursorOverUIObject() && SelectedBuildingType != null) {
-            // On LMB, standard "Can't place here" 
-            Debug.Log("Can't Place Object! Something is already there.");
+            // If you click on a any tile that isn't made to have something placed on it (like buildings), log that
+            Debug.Log("Not A Suitable Location! (Something is already there!)");
         }
     }
 

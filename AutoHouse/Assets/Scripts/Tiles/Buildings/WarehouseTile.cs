@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WarehouseTile : Tile
+public class WarehouseTile : BuildingTile
 {
     
 }

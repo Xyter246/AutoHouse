@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IronTile : ResourceTile 
+public class ConveyorTile : BuildingTile 
 {
-    
+
 }
