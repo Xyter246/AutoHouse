@@ -26,7 +26,7 @@ public abstract class Tile : GameManager
         }
     }
 
-    protected void OnMouseDown()
+    public virtual void OnMouseDown()
     {   // Only execute if not over UI
         if (!Functions.IsCursorOverUIObject() && SelectedBuildingType != null) {
             // On LMB, standard "Can't place here" 

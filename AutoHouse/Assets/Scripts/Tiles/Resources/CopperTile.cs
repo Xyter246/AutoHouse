@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CopperTile : Tile
-{
+public class CopperTile : ResourceTile {
 
 }

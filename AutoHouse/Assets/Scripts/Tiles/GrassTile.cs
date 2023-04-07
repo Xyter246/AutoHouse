@@ -13,7 +13,7 @@ public class GrassTile : Tile
     }
 
     private void Awake()
-    {   // if grass tile was not made with Init(), then get for Mouse position to check offset
+    {   // if grass tile was not made with GenerateGrid(), then get for Mouse position to check offset
         if (Time.timeSinceLevelLoadAsDouble > 0)
         {
             Init((int)Functions.GetMousePosition().x, (int)Functions.GetMousePosition().y);
@@ -21,7 +21,7 @@ public class GrassTile : Tile
     }
 
     #region "Mouse Interactions"
-    new private void OnMouseDown()
+    public override void OnMouseDown()
     {   // Only execute if not over UI
         if (!Functions.IsCursorOverUIObject()) {
             if (SelectedBuildingType != null /*&& SelectedBuildingType != MinerTile*/)
