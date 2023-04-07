@@ -85,6 +85,7 @@ MonoBehaviour:
   _renderer: {fileID: 5281479586064420398}
   _replaceTile: {fileID: 7471173326427057435, guid: d31c08251077b014c9db1b6a1878215b, type: 3}
   _highlight: {fileID: 8211423282441325715}
+  _copperMinerTile: {fileID: 1600876989404623796, guid: 01f6866e5b997224894d4fe68e0730f9, type: 3}
 --- !u!212 &3984195947835333112 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5380503208945537761, guid: f4ee5bbdb6df78b40acd715f6c828c8e, type: 3}
@@ -115,3 +116,4 @@ MonoBehaviour:
   _renderer: {fileID: 3984195947835333112}
   _replaceTile: {fileID: 7471173326427057435, guid: d31c08251077b014c9db1b6a1878215b, type: 3}
   _highlight: {fileID: 8211423282441325715}
+  _copperMinerTile: {fileID: 0}

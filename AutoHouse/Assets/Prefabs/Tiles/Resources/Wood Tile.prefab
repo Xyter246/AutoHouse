@@ -97,6 +97,7 @@ MonoBehaviour:
   _renderer: {fileID: 5985157921660545911}
   _replaceTile: {fileID: 7471173326427057435, guid: d31c08251077b014c9db1b6a1878215b, type: 3}
   _highlight: {fileID: 7759927695695178186}
+  _woodMinerTile: {fileID: 4802133778140921956, guid: c309ba9532990a748ad14f1efd1ee72e, type: 3}
 --- !u!212 &5985157921660545911 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3794919856798827831, guid: f4ee5bbdb6df78b40acd715f6c828c8e, type: 3}
