@@ -23,5 +23,4 @@ public class PlayerController : MonoBehaviour {
     private void FixedUpdate() {
         _Rigidbody.velocity = _Movement * _Speed;
     }
-
 }

@@ -20,12 +20,10 @@ public class CameraZoomScrollWheel : MonoBehaviour
                 ZoomCamera.orthographicSize -= Input.GetAxis("Mouse ScrollWheel") * ScrollSpeed;
             }
             // Set a maximum and minimum zoom distance
-            if (ZoomCamera.orthographicSize < minZoom)
-            {
+            if (ZoomCamera.orthographicSize < minZoom) {
                 ZoomCamera.orthographicSize = minZoom;
             }
-            if (ZoomCamera.orthographicSize > maxZoom)
-            {
+            if (ZoomCamera.orthographicSize > maxZoom) {
                 ZoomCamera.orthographicSize = maxZoom;
             }
         }
