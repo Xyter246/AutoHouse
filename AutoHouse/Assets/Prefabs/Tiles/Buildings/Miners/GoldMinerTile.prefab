@@ -82,6 +82,8 @@ MonoBehaviour:
   _renderer: {fileID: 6804482235452442856}
   _replaceTile: {fileID: 7471173326427057435, guid: d31c08251077b014c9db1b6a1878215b, type: 3}
   _highlight: {fileID: 7408738878540483157}
+  _mineDuration: 2
+  _goldItem: {fileID: 4719986508498175416, guid: c5928444cb5f1d9429752ca4afc6b3f1, type: 3}
 --- !u!212 &6804482235452442856 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 4363277017075023631, guid: db7523704d0676d4494420240f4bc647, type: 3}

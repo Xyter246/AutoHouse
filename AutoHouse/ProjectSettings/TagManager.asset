@@ -8,6 +8,7 @@ TagManager:
   - MinerTile
   - Resources
   - Buildings
+  - Items
   layers:
   - Default
   - TransparentFX

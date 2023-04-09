@@ -5,6 +5,17 @@ using UnityEngine;
 
 public class GameTickSystem : MonoBehaviour
 {
+    private void Awake()
+    {
+        tick = 0;
+    }
+
+    public void Start()
+    {
+        GameTickSystem.OnTick += delegate (object sender, GameTickSystem.OnTickEventArgs e)
+        { };
+    }
+
     public class OnTickEventArgs : EventArgs
     {
         public int tick;
@@ -17,11 +28,6 @@ public class GameTickSystem : MonoBehaviour
 
     private int tick;
     private float tickTimer;
-
-    private void Awake()
-    {
-        tick = 0;
-    }
 
     private void Update()
     {

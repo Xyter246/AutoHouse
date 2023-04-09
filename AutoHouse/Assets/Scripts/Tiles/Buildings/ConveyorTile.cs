@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class ConveyorTile : Tile
 {
-    Functions func = new Functions();
+    Functions fun = new Functions();
+
+    //private void Update()
+    //{
+    //    if (func.CheckPositionRelative(0, 0)[] > 1) {
+
+    //    }
+    //}
 
     private void Awake()
     {
-        func.CheckNorth();
-        func.CheckEast();
-        func.CheckSouth();
-        func.CheckWest();
+        Debug.Log(fun.CheckMyPosition());
     }
 }

@@ -2,22 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IronMinerTile : Tile
+public class IronMinerTile : MinerTile
 {
-    private int mineTick;
-    [SerializeField] private int mineTickDuration;
+    [SerializeField] private float _mineDuration;
+    [SerializeField] private Item _ironItem;
+    private int _amountExtracted = 0;
+    private int _amountProduced = 0;
 
-    private void Awake()
-    {
-        GameTickSystem.OnTick += GameTickSystem_OnTick;
+    private void Update()
+    {       // Find 'Mine()' on MinerTile.cs
+        if (Mine(_ironItem, _mineDuration, _amountProduced, _amountExtracted)) {
+            _amountProduced++;
+            Debug.Log("Item has been Spawned!");
+        } else { Debug.Log("Miner is Stuck!"); }
     }
 
-    private void GameTickSystem_OnTick(object sender, GameTickSystem.OnTickEventArgs e)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-
-        if ((mineTick % 20) == 0) {
-            
-        }
+        _amountExtracted++;
+        Debug.Log("Iron Extracted!");
     }
-
 }

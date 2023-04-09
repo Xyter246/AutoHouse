@@ -83,6 +83,8 @@ MonoBehaviour:
   _renderer: {fileID: 8393785259865577413}
   _replaceTile: {fileID: 7471173326427057435, guid: d31c08251077b014c9db1b6a1878215b, type: 3}
   _highlight: {fileID: 5531536844436788600}
+  _mineDuration: 2
+  _coalItem: {fileID: 5888432282326958144, guid: edee146198bad8e489513a574298ea70, type: 3}
 --- !u!1 &5531536844436788600 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 302366930544672178, guid: db7523704d0676d4494420240f4bc647, type: 3}
