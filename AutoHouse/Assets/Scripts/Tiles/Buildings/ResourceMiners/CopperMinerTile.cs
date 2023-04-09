@@ -13,13 +13,11 @@ public class CopperMinerTile : MinerTile
     {       // Find 'Mine()' on MinerTile.cs
         if (Mine(_copperItem, _mineDuration, _amountProduced, _amountExtracted)) {
             _amountProduced++;
-            Debug.Log("Item has been Spawned!");
-        } else { Debug.Log("Miner is Stuck!"); }
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         _amountExtracted++;
-        Debug.Log("Copper Extracted!");
     }
 }
