@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
 {
     protected static Tile _selectedBuildingType;
 
-
     public Tile SelectedBuildingType
     {
         get {
