@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class Tile : GameManager
 {
-    [SerializeField] protected SpriteRenderer _renderer;
-    [SerializeField] protected Tile _replaceTile;
+    [SerializeField] protected SpriteRenderer _renderer; // must be 'protected'
+    [SerializeField] private Tile _replaceTile;
     [SerializeField] private GameObject _highlight;
 
     public virtual void Init(int x, int y)

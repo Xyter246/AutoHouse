@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour 
 {
-    [SerializeField] protected static Tile _selectedBuildingType;
-    [SerializeField] protected static Tile _ghostTileType;
+    protected static Tile _selectedBuildingType;
+
 
     public Tile SelectedBuildingType
     {
@@ -15,13 +15,6 @@ public class GameManager : MonoBehaviour
         }
         set {
             _selectedBuildingType = value;
-        }
-    }
-
-    private void Update()
-    {
-        if (SelectedBuildingType != null) {
-            _ghostTileType = SelectedBuildingType;
         }
     }
 }
