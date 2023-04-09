@@ -107,4 +107,4 @@ MonoBehaviour:
   _renderer: {fileID: 1151417268729071248}
   _replaceTile: {fileID: 7471173326427057435, guid: d31c08251077b014c9db1b6a1878215b, type: 3}
   _highlight: {fileID: 3982844173937640493}
-  _ironMinerTile: {fileID: 4226433873970982683, guid: 56f4f6d220be6a448b96220f76805627, type: 3}
+  _ironMinerTile: {fileID: 34120229880648762, guid: 56f4f6d220be6a448b96220f76805627, type: 3}

@@ -97,7 +97,7 @@ MonoBehaviour:
   _renderer: {fileID: 6774731445614120029}
   _replaceTile: {fileID: 7471173326427057435, guid: d31c08251077b014c9db1b6a1878215b, type: 3}
   _highlight: {fileID: 7402772166307925728}
-  _stoneMinerTile: {fileID: 2668930527742035986, guid: 1aaa20ae279087040b5d6566c3d3e395, type: 3}
+  _stoneMinerTile: {fileID: 3780987328338449521, guid: 1aaa20ae279087040b5d6566c3d3e395, type: 3}
 --- !u!212 &6774731445614120029 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3794919856798827831, guid: f4ee5bbdb6df78b40acd715f6c828c8e, type: 3}

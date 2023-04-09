@@ -17,4 +17,10 @@ public class GameManager : MonoBehaviour
             _selectedBuildingType = value;
         }
     }
+
+    public void Start()
+    {
+        GameTickSystem.OnTick += delegate (object sender, GameTickSystem.OnTickEventArgs e)
+        { };
+    }
 }

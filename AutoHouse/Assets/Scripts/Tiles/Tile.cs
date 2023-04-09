@@ -7,6 +7,7 @@ public abstract class Tile : GameManager
     [SerializeField] protected SpriteRenderer _renderer; // must be 'protected'
     [SerializeField] private Tile _replaceTile;
     [SerializeField] private GameObject _highlight;
+    protected bool isDoomed;
 
     public virtual void Init(int x, int y)
     {   // placeholder, purpose is to NOT to something
@@ -20,6 +21,7 @@ public abstract class Tile : GameManager
             // On RMB, then destroy object and replace with replaceobject (standard is grass)
             if (Input.GetKey(KeyCode.Mouse1)) {
                 // Destroy selected gameObject
+                isDoomed = true;
                 Destroy(gameObject);
 
                 // Make a replace tile (grass) and name it accordingly "Tile [x] [y]"
