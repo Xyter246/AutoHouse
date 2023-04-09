@@ -27,79 +27,16 @@ public class Functions : MonoBehaviour
     }
 
     #region "Checks Around Tiles"
-    public List<GameObject> CheckMyPosition()
+    public List<GameObject> GetObjectsOnMyPosition(GameObject go)
     {
         List<GameObject> gameObjects = new List<GameObject>();
-        Vector3 _directedPosition = (Vector3)transform.position;
+        Vector3 _directedPosition = go.transform.position;
+        Vector3 _direction = Vector3.zero;
             // Draw a ray for debugging
-        Debug.DrawRay(transform.position, Vector3.zero, Color.green, 1000f);
+        Debug.DrawRay(go.transform.position, _direction, Color.green, 1000f);
             // Draw a physics Dot and if there is a gameobject report that back
         Collider2D[] _customColliderArray = Physics2D.OverlapPointAll(_directedPosition);
         foreach (Collider2D collider2D in _customColliderArray) {
-            gameObjects.Add(collider2D.gameObject);
-        }
-        return gameObjects;
-    }
-
-    public List<GameObject> CheckNorth()
-    {
-        List<GameObject> gameObjects = new List<GameObject>();
-            // Make a new vector in the corresponding direction
-        Vector2 _direction = Vector2.up;
-        Vector2 _directedPosition = (Vector2)transform.position + _direction;
-            // Draw a ray for debugging
-        Debug.DrawRay(transform.position, _direction, Color.red, 1000f);
-            // Draw a physics Dot and if there is a gameobject report that back
-        Collider2D[] _northColliderArray = Physics2D.OverlapPointAll(_directedPosition);
-        foreach (Collider2D collider2D in _northColliderArray) {
-            gameObjects.Add(collider2D.gameObject);
-        }
-        return gameObjects;
-    }
-
-    public List<GameObject> CheckEast()
-    {
-        List<GameObject> gameObjects = new List<GameObject>();
-            // Make a new vector in the corresponding direction
-        Vector2 _direction = Vector2.right;
-        Vector2 _directedPosition = (Vector2)transform.position + _direction;
-            // Draw a ray for debugging
-        Debug.DrawRay(transform.position, _direction, Color.cyan, 1000f);
-            // Draw a physics Dot and if there is a gameobject report that back
-        Collider2D[] _eastColliderArray = Physics2D.OverlapPointAll(_directedPosition);
-        foreach (Collider2D collider2D in _eastColliderArray) {
-            gameObjects.Add(collider2D.gameObject);
-        }
-        return gameObjects;
-    }
-
-    public List<GameObject> CheckSouth()
-    {
-        List<GameObject> gameObjects = new List<GameObject>();
-            // Make a new vector in the corresponding direction
-        Vector2 _direction = Vector2.down;
-        Vector2 _directedPosition = (Vector2)transform.position + _direction;
-            // Draw a ray for debugging
-        Debug.DrawRay(transform.position, _direction, Color.white, 1000f);
-            // Draw a physics Dot and if there is a gameobject report that back
-        Collider2D[] _southColliderArray = Physics2D.OverlapPointAll(_directedPosition);
-        foreach (Collider2D collider2D in _southColliderArray) {
-            gameObjects.Add(collider2D.gameObject);
-        }
-        return gameObjects;
-    }
-
-    public List<GameObject> CheckWest()
-    {
-        List<GameObject> gameObjects = new List<GameObject>();
-            // Make a new vector in the corresponding direction
-        Vector2 _direction = Vector2.left;
-        Vector2 _directedPosition = (Vector2)transform.position + _direction;
-            // Draw a ray for debugging
-        Debug.DrawRay(transform.position, _direction, Color.green, 1000f);
-            // Draw a physics Dot and if there is a gameobject report that back
-        Collider2D[] _westColliderArray = Physics2D.OverlapPointAll(_directedPosition);
-        foreach (Collider2D collider2D in _westColliderArray) {
             gameObjects.Add(collider2D.gameObject);
         }
         return gameObjects;
