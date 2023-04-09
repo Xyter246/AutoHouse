@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IronMinerTile : MinerTile
+public class IronMinerTile : Tile
 {
     private int mineTick;
     [SerializeField] private int mineTickDuration;

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoalMinerTile : MinerTile
+public class CoalMinerTile : Tile
 {
     
 }

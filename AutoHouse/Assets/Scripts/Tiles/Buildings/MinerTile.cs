@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem.Controls;
 
-public class MinerTile : BuildingTile
+public class MinerTile : Tile
 {
     
 }
