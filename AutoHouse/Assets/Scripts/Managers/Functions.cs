@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 public class Functions : MonoBehaviour
 {
-    public static Vector2 GetMousePosition()
+    public Vector2 GetMousePosition()
     {
             // Get mouse position in pixels
         Vector2 screenPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
@@ -15,7 +15,7 @@ public class Functions : MonoBehaviour
         return mousePosition;
     }
 
-    public static bool IsCursorOverUIObject()
+    public bool IsCursorOverUIObject()
     {       // Get pointer position
         PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
         eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);

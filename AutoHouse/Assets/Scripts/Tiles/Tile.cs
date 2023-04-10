@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CodeMonkey.Utils;
 
 public abstract class Tile : GameManager
 {
+    protected static Functions func = new Functions();
     [SerializeField] protected SpriteRenderer _renderer; // must be 'protected'
     [SerializeField] private Tile _replaceTile;
     [SerializeField] private GameObject _highlight;
@@ -16,14 +18,14 @@ public abstract class Tile : GameManager
     #region "Mouse Interactions"
     protected void OnMouseOver()
     {   // Only execute if not over UI
-        if (!Functions.IsCursorOverUIObject()) {
+        if (!func.IsCursorOverUIObject()) {
             // On RMB, then destroy object and replace with replaceobject (standard is grass)
             if (Input.GetKey(KeyCode.Mouse1)) {
                 // Destroy selected gameObject
                 Destroy(gameObject);
 
                 // Make a replace tile (grass) and name it accordingly "Tile [x] [y]"
-                _replaceTile.name = $"Tile {Functions.GetMousePosition().x} {Functions.GetMousePosition().y}";
+                _replaceTile.name = $"Tile {func.GetMousePosition().x} {func.GetMousePosition().y}";
                 Instantiate(_replaceTile, transform.position, Quaternion.identity);
             }
         }
@@ -31,9 +33,9 @@ public abstract class Tile : GameManager
 
     protected virtual void OnMouseDown()
     {   // Only execute if not over UI
-        if (!Functions.IsCursorOverUIObject() && SelectedBuildingType != null) {
+        if (!func.IsCursorOverUIObject() && SelectedBuildingType != null) {
             // If you click on a any tile that isn't made to have something placed on it (like buildings), log that
-            Debug.Log("Not A Suitable Location! (Something is already there!)");
+            UtilsClass.CreateWorldTextPopup("Not A Suitable Location! (Something is already there!)", func.GetMousePosition());
         }
     }
 
