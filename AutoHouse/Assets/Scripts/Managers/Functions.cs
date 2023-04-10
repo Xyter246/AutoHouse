@@ -35,9 +35,13 @@ public class Functions : MonoBehaviour
     }
 
     #region "Checks Around Tiles"
-    public List<GameObject> GetObjectsOnMyPosition(GameObject go)    
+    public List<GameObject> GetObjectsOnMyPosition(GameObject go, Vector2? _slightOffset = null)    
     {
-        Vector3 _directedPosition = go.transform.position;
+        // If _slightOffset isn't given
+        if (_slightOffset == null) { _slightOffset = Vector2.zero; }
+
+        // Method:
+        Vector3 _directedPosition = go.transform.position + (Vector3)_slightOffset;
             // Draw a physics Dot and if there is a gameobject report that back
         Collider2D[] _customColliderArray = Physics2D.OverlapPointAll(_directedPosition);
         List<GameObject> gameObjects = new List<GameObject>();
@@ -46,6 +50,22 @@ public class Functions : MonoBehaviour
         }
         return gameObjects;
     }
+
+    //public List<GameObject> GetObjects(GameObject go, Vector2? _boxSize = null, float _angle, Vector2 _direction)
+    //{
+    //    // If _slightOffset isn't given
+    //    if (_boxSize == null) { _boxSize = new Vector2(1, 1); }
+
+    //    // Method:
+    //    Vector3 _position = go.transform.position;
+    //    // Draw a physics Dot and if there is a gameobject report that back
+    //    RaycastHit2D[] _customColliderArray = Physics2D.BoxCastAll(_position, (Vector2)_boxSize, _angle, _direction);
+    //    List<GameObject> gameObjects = new List<GameObject>();
+    //    foreach (RaycastHit2D collider2D in _customColliderArray) {
+    //        gameObjects.Add(collider2D.gameObject);
+    //    }
+    //    return gameObjects;
+    //}
 
     // Dynamic Overload method, ability to choose color, or to not choose it
     public List<GameObject> GetRelativePosition(GameObject go, Vector2 _direction, Color? _color = null)

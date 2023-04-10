@@ -82,7 +82,7 @@ MonoBehaviour:
   _renderer: {fileID: 5853555214194858915}
   _replaceTile: {fileID: 7471173326427057435, guid: d31c08251077b014c9db1b6a1878215b, type: 3}
   _highlight: {fileID: 7602992336693958942}
-  _mineDuration: 2
+  _mineDuration: 8
   _woodItem: {fileID: 757756615702968338, guid: ac9a6b2943d07b74cb0b6c3c510db8d7, type: 3}
 --- !u!212 &5853555214194858915 stripped
 SpriteRenderer:

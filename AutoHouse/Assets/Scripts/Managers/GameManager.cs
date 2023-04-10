@@ -8,6 +8,13 @@ public class GameManager : MonoBehaviour
     protected static GridManager gridManager = new GridManager();
     protected static Tile _selectedBuildingType;
 
+    protected static int AMOUNT_COAL;
+    protected static int AMOUNT_COPPER;
+    protected static int AMOUNT_GOLD;
+    protected static int AMOUNT_IRON;
+    protected static int AMOUNT_STONE;
+    protected static int AMOUNT_WOOD;
+
     public Tile SelectedBuildingType
     {
         get {

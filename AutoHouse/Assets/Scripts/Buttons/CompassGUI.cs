@@ -15,7 +15,6 @@ public class CompassGUI : MonoBehaviour
     private void Awake()
     {
         image.color = new Vector4(255, 255, 255, 255);
-        //image.sprite = _north;
     }
 
     private void Update()

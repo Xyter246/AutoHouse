@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: ccba8ff8e387be24cb73bd4daa277935, type: 3}
     - target: {fileID: 5759495260422937521, guid: f4ee5bbdb6df78b40acd715f6c828c8e, type: 3}
       propertyPath: m_Name
-      value: Warehouse Tile
+      value: WarehouseTile
       objectReference: {fileID: 0}
     - target: {fileID: 5759495260422937521, guid: f4ee5bbdb6df78b40acd715f6c828c8e, type: 3}
       propertyPath: m_TagString
@@ -85,6 +85,12 @@ MonoBehaviour:
   _renderer: {fileID: 5899701880502916631}
   _replaceTile: {fileID: 7471173326427057435, guid: d31c08251077b014c9db1b6a1878215b, type: 3}
   _highlight: {fileID: 7593266683746571434}
+  _coal: {fileID: 5888432282326958144, guid: edee146198bad8e489513a574298ea70, type: 3}
+  _copper: {fileID: 1690195211459352686, guid: 536700f2bdcd7f749b6a9d8e6ed94328, type: 3}
+  _gold: {fileID: 4719986508498175416, guid: c5928444cb5f1d9429752ca4afc6b3f1, type: 3}
+  _iron: {fileID: 4964530974716090844, guid: 6a941155ec0f3d44d953c5e0c7ef31e6, type: 3}
+  _stone: {fileID: 6716783015276811748, guid: 45aae41d136bcdd479c5275b89f430c3, type: 3}
+  _wood: {fileID: 757756615702968338, guid: ac9a6b2943d07b74cb0b6c3c510db8d7, type: 3}
 --- !u!212 &5899701880502916631 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3794919856798827831, guid: f4ee5bbdb6df78b40acd715f6c828c8e, type: 3}

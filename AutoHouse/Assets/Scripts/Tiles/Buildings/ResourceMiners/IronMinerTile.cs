@@ -6,18 +6,10 @@ public class IronMinerTile : MinerTile
 {
     [SerializeField] private float _mineDuration;
     [SerializeField] private Item _ironItem;
-    private int _amountExtracted = 0;
-    private int _amountProduced = 0;
 
     private void Update()
-    {       // Find 'Mine()' on MinerTile.cs
-        if (Mine(_ironItem, _mineDuration, _amountProduced, _amountExtracted)) {
-            _amountProduced++;
-        }
+    {       // Find 'Mine(parameters)' on MinerTile.cs
+        Mine(_ironItem, _mineDuration);
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        _amountExtracted++;
-    }
 }
