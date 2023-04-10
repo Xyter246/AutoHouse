@@ -26,32 +26,38 @@ public class Functions : MonoBehaviour
         return results.Count > 0;
     }
 
-    #region "Checks Around Tiles"
-    public List<GameObject> GetObjectsOnMyPosition(GameObject go)
+    public Vector2Int GetRoundedGridPosition(GameObject go)
     {
-        List<GameObject> gameObjects = new List<GameObject>();
+        int x = (int)Mathf.Round(go.transform.position.x);
+        int y = (int)Mathf.Round(go.transform.position.y);
+        Vector2Int output = new Vector2Int(x, y);
+        return output;
+    }
+
+    #region "Checks Around Tiles"
+    public List<GameObject> GetObjectsOnMyPosition(GameObject go)    
+    {
         Vector3 _directedPosition = go.transform.position;
-        Vector3 _direction = Vector3.zero;
-            // Draw a ray for debugging
-        Debug.DrawRay(go.transform.position, _direction, Color.green, 1000f);
             // Draw a physics Dot and if there is a gameobject report that back
         Collider2D[] _customColliderArray = Physics2D.OverlapPointAll(_directedPosition);
+        List<GameObject> gameObjects = new List<GameObject>();
         foreach (Collider2D collider2D in _customColliderArray) {
             gameObjects.Add(collider2D.gameObject);
         }
         return gameObjects;
     }
 
-    public List<GameObject> CheckPositionRelative(int x, int y)
+    // Dynamic Overload method, ability to choose color, or to not choose it
+    public List<GameObject> GetRelativePosition(GameObject go, Vector2 _direction, Color? _color = null)
     {       
-        List<GameObject> gameObjects = new List<GameObject>();
-            // Make a new vector in the corresponding direction
-        Vector2 _direction = new Vector2(x, y);
-        Vector2 _directedPosition = (Vector2)transform.position + _direction;
+        if (_color == null) { _color = Color.red; }
+             // Make a new vector in the correspondense with direction
+        Vector2 _directedPosition = (Vector2)go.transform.position + _direction;
             // Draw a ray for debugging
-        Debug.DrawRay(transform.position, _direction, Color.green, 1000f);
+        Debug.DrawRay(go.transform.position, new Vector3(_direction.x, _direction.y, -5), (Color)_color, 1000f);
             // Draw a physics Dot and if there is a gameobject report that back
         Collider2D[] _customColliderArray = Physics2D.OverlapPointAll(_directedPosition);
+        List<GameObject> gameObjects = new List<GameObject>();
         foreach (Collider2D collider2D in _customColliderArray) {
             gameObjects.Add(collider2D.gameObject);
         }

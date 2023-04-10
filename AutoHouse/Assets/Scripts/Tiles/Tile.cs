@@ -5,7 +5,6 @@ using CodeMonkey.Utils;
 
 public abstract class Tile : GameManager
 {
-    protected static Functions func = new Functions();
     [SerializeField] protected SpriteRenderer _renderer; // must be 'protected'
     [SerializeField] private Tile _replaceTile;
     [SerializeField] private GameObject _highlight;

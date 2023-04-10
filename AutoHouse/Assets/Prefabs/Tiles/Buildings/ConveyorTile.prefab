@@ -94,6 +94,7 @@ MonoBehaviour:
   _replaceTile: {fileID: 7471173326427057435, guid: d31c08251077b014c9db1b6a1878215b, type: 3}
   _highlight: {fileID: 6076590618122392327}
   _conveyor: {fileID: 2031415754637253432}
+  _conveyorSpeed: 0.5
 --- !u!1 &6076590618122392327 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 870606275560556426, guid: f4ee5bbdb6df78b40acd715f6c828c8e, type: 3}

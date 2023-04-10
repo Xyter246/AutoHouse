@@ -7,7 +7,6 @@ public class GrassTile : Tile
 {
     [SerializeField] private Color _baseColor, _offsetColor;
     [SerializeField] private Tile _conveyor;
-    ConveyorTile conveyor = new ConveyorTile();
 
     public override void Init(int x, int y)
     { // Make the grass colors alternate like a chess board
@@ -32,7 +31,9 @@ public class GrassTile : Tile
                 if (SelectedBuildingType == SelectedBuildingType.CompareTag("MinerTile")) {
                     UtilsClass.CreateWorldTextPopup("Not A Suitable Location! (Miners Can't Go On Grass)", func.GetMousePosition());
                 } else if (SelectedBuildingType == _conveyor) {
-                    conveyor.CreateConveyor();
+                    Destroy(gameObject);
+                    //gridManager.RotateTile();
+                    Instantiate(SelectedBuildingType, transform.position, Quaternion.identity);
                 } else {
                     Destroy(gameObject);
                     Instantiate(SelectedBuildingType, transform.position, Quaternion.identity);

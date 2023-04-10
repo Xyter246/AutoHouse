@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Item : GameManager
 {
-    Functions func = new Functions();
     protected void OnMouseOver()
     {   // Only execute if not over UI
         if (!func.IsCursorOverUIObject()) {
