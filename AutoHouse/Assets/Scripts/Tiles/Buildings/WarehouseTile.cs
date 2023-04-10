@@ -13,17 +13,19 @@ public class WarehouseTile : Tile
 
     private void Update()
     {
-        if (gameObject.CompareTag("Items")) {
-            Debug.Log("item that collided is of tag ITEMS");
-
-            //switch (collision) {
-            //    case collision.gameObject = _coal;
-            //        break;
-
-            //    default:
-            //        Debug.Log("Not an Item");
-            //        return;
-            //}
+        List<GameObject> boxList = func.GetObjectsInBox(gameObject);
+        foreach (var obj in boxList)
+        {
+            Debug.Log(obj);
+            if (obj.CompareTag("Items")) {
+                if (obj == _coal) { AMOUNT_COAL++; } else
+                if (obj == _copper) { AMOUNT_COPPER++; } else
+                if (obj == _gold) { AMOUNT_GOLD++; } else
+                if (obj == _iron) { AMOUNT_IRON++; } else
+                if (obj == _stone) { AMOUNT_STONE++; } else
+                if (obj == _wood) { AMOUNT_WOOD++; }
+                Destroy(obj);
+            }
         }
     }
 }

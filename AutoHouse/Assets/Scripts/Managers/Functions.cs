@@ -15,6 +15,15 @@ public class Functions : MonoBehaviour
         return mousePosition;
     }
 
+    public void SwitchActiveState(GameObject gameObject)
+    {
+        if (gameObject.activeInHierarchy == true) {
+            gameObject.SetActive(false);
+        } else {
+            gameObject.SetActive(true);
+        }
+    }
+
     public bool IsCursorOverUIObject()
     {       // Get pointer position
         PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
@@ -44,28 +53,30 @@ public class Functions : MonoBehaviour
         Vector3 _directedPosition = go.transform.position + (Vector3)_slightOffset;
             // Draw a physics Dot and if there is a gameobject report that back
         Collider2D[] _customColliderArray = Physics2D.OverlapPointAll(_directedPosition);
-        List<GameObject> gameObjects = new List<GameObject>();
+        List<GameObject> gameObjects = new ();
         foreach (Collider2D collider2D in _customColliderArray) {
             gameObjects.Add(collider2D.gameObject);
         }
         return gameObjects;
     }
 
-    //public List<GameObject> GetObjects(GameObject go, Vector2? _boxSize = null, float _angle, Vector2 _direction)
-    //{
-    //    // If _slightOffset isn't given
-    //    if (_boxSize == null) { _boxSize = new Vector2(1, 1); }
+    public List<GameObject> GetObjectsInBox(GameObject go, Vector2? _boxSize = null, float ? _angle = null)
+    {
+        // If overloads aren't given
+        if (_boxSize == null) { _boxSize = new Vector2(0.9f, 0.9f); }
+        if (_angle == null) { _angle = 0f; }
 
-    //    // Method:
-    //    Vector3 _position = go.transform.position;
-    //    // Draw a physics Dot and if there is a gameobject report that back
-    //    RaycastHit2D[] _customColliderArray = Physics2D.BoxCastAll(_position, (Vector2)_boxSize, _angle, _direction);
-    //    List<GameObject> gameObjects = new List<GameObject>();
-    //    foreach (RaycastHit2D collider2D in _customColliderArray) {
-    //        gameObjects.Add(collider2D.gameObject);
-    //    }
-    //    return gameObjects;
-    //}
+        // Method:
+        Vector3 _position = go.transform.position;
+
+        // Draw a physics Dot and if there is a gameobject report that back
+        Collider2D[] _boxColliderArray = Physics2D.OverlapBoxAll(_position, (Vector2)_boxSize, (float)_angle);
+        List<GameObject> boxColliderList = new ();
+        foreach (var obj in _boxColliderArray) {
+            boxColliderList.Add(obj.gameObject);
+        }
+        return boxColliderList;
+    }
 
     // Dynamic Overload method, ability to choose color, or to not choose it
     public List<GameObject> GetRelativePosition(GameObject go, Vector2 _direction, Color? _color = null)
@@ -77,7 +88,7 @@ public class Functions : MonoBehaviour
         Debug.DrawRay(go.transform.position, new Vector3(_direction.x, _direction.y, -5), (Color)_color, 1000f);
             // Draw a physics Dot and if there is a gameobject report that back
         Collider2D[] _customColliderArray = Physics2D.OverlapPointAll(_directedPosition);
-        List<GameObject> gameObjects = new List<GameObject>();
+        List<GameObject> gameObjects = new ();
         foreach (Collider2D collider2D in _customColliderArray) {
             gameObjects.Add(collider2D.gameObject);
         }

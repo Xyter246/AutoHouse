@@ -13,20 +13,11 @@ public class ResourcesButton : GameManager
 
     private void OnClick()
     {
-        SwitchActiveState(_coalButton);
-        SwitchActiveState(_copperButton);
-        SwitchActiveState(_goldButton);
-        SwitchActiveState(_ironButton);
-        SwitchActiveState(_stoneButton);
-        SwitchActiveState(_woodButton);
-    }
-
-    public void SwitchActiveState(GameObject gameObject)
-    {
-        if (gameObject.activeInHierarchy == true) { 
-            gameObject.SetActive(false);
-        } else {
-            gameObject.SetActive(true);
-        }
+        func.SwitchActiveState(_coalButton);
+        func.SwitchActiveState(_copperButton);
+        func.SwitchActiveState(_goldButton);
+        func.SwitchActiveState(_ironButton);
+        func.SwitchActiveState(_stoneButton);
+        func.SwitchActiveState(_woodButton);
     }
 }

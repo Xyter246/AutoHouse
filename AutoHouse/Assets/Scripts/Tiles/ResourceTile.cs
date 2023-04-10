@@ -12,7 +12,7 @@ public class ResourceTile : Tile
             Destroy(gameObject);
             Instantiate(x, transform.position, Quaternion.identity);
         } else {
-            UtilsClass.CreateWorldTextPopup("facing East", func.GetMousePosition()); ;
+            UtilsClass.CreateWorldTextPopup("Not A Suitable Location! (Miners Only)", func.GetMousePosition()); ;
         }
     }
 }
