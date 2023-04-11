@@ -6,20 +6,23 @@ public class Functions : MonoBehaviour
 {
     public Vector2 GetMousePosition()
     {
-            // Get mouse position in pixels
+        // Get mouse position in pixels
         Vector2 screenPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-            // Transfer pixel location to world x and y
+        // Transfer pixel location to world x and y
         Vector2 worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
-            // Round x and y to nearest integer
+        // Round x and y to nearest integer
         Vector2 mousePosition = new Vector2(Mathf.Round(worldPosition.x), Mathf.Round(worldPosition.y));
         return mousePosition;
     }
 
     public void SwitchActiveState(GameObject gameObject)
     {
+        // if the gameobject is Active
         if (gameObject.activeInHierarchy == true) {
+            // Deactivate it
             gameObject.SetActive(false);
         } else {
+            // if it isn't active, activate it
             gameObject.SetActive(true);
         }
     }
@@ -37,44 +40,52 @@ public class Functions : MonoBehaviour
 
     public Vector2Int GetRoundedGridPosition(GameObject go)
     {
+        // Get X coordinate and round it to the nearest integer
         int x = (int)Mathf.Round(go.transform.position.x);
+        // Get Y coordinate and round it to the nearest integer
         int y = (int)Mathf.Round(go.transform.position.y);
+        // Return output
         Vector2Int output = new Vector2Int(x, y);
         return output;
     }
 
     #region "Checks Around Tiles"
-    public List<GameObject> GetObjectsOnMyPosition(GameObject go, Vector2? _slightOffset = null)    
+    public List<GameObject> GetObjectsOnMyDotPosition(GameObject go, Vector2? _slightOffset = null)    
     {
         // If _slightOffset isn't given
         if (_slightOffset == null) { _slightOffset = Vector2.zero; }
 
         // Method:
         Vector3 _directedPosition = go.transform.position + (Vector3)_slightOffset;
-            // Draw a physics Dot and if there is a gameobject report that back
+        // Draw a physics Dot and save the colliders that hit it in an array
         Collider2D[] _customColliderArray = Physics2D.OverlapPointAll(_directedPosition);
         List<GameObject> gameObjects = new ();
+        // Add every item in the array as a gameobject to a list
         foreach (Collider2D collider2D in _customColliderArray) {
             gameObjects.Add(collider2D.gameObject);
         }
+        // return that list
         return gameObjects;
     }
 
-    public List<GameObject> GetObjectsInBox(GameObject go, Vector2? _boxSize = null, float ? _angle = null)
+    public List<GameObject> GetObjectsInBox(Vector2? _origin = null, Vector2? _boxSize = null, float ? _angle = null)
     {
         // If overloads aren't given
+        if (_origin == null) { _origin = transform.position; }
         if (_boxSize == null) { _boxSize = new Vector2(0.9f, 0.9f); }
         if (_angle == null) { _angle = 0f; }
 
         // Method:
-        Vector3 _position = go.transform.position;
+        Vector3 _position = (Vector2)_origin;
 
-        // Draw a physics Dot and if there is a gameobject report that back
+        // Create a physics Rectangle (can be a line) and save the colliders that hit it in an array
         Collider2D[] _boxColliderArray = Physics2D.OverlapBoxAll(_position, (Vector2)_boxSize, (float)_angle);
         List<GameObject> boxColliderList = new ();
+        // Add every item in the array as a gameobject to a list
         foreach (var obj in _boxColliderArray) {
             boxColliderList.Add(obj.gameObject);
         }
+        // return that list
         return boxColliderList;
     }
 
@@ -82,17 +93,27 @@ public class Functions : MonoBehaviour
     public List<GameObject> GetRelativePosition(GameObject go, Vector2 _direction, Color? _color = null)
     {       
         if (_color == null) { _color = Color.red; }
-             // Make a new vector in the correspondense with direction
+        // Make a new vector in the correspondense with direction
         Vector2 _directedPosition = (Vector2)go.transform.position + _direction;
-            // Draw a ray for debugging
+        // Draw a ray for debugging
         Debug.DrawRay(go.transform.position, new Vector3(_direction.x, _direction.y, -5), (Color)_color, 1000f);
-            // Draw a physics Dot and if there is a gameobject report that back
+        // Draw a physics Dot and save the colliders that hit it in an array
         Collider2D[] _customColliderArray = Physics2D.OverlapPointAll(_directedPosition);
         List<GameObject> gameObjects = new ();
+        // Add every item in the array as a gameobject to a list
         foreach (Collider2D collider2D in _customColliderArray) {
             gameObjects.Add(collider2D.gameObject);
         }
+        // return that list
         return gameObjects;
     }
     #endregion
+
+    public bool IsThisGameObjectLocked(GameObject gameobject)
+    {   
+        // if the gameobject has Locked (Child), then the gameObject must be Locked and should not be available
+        if (gameobject.transform.Find("Locked").gameObject != null) { return true; } 
+        // if it isn't locked, return false
+        else return false;
+    }
 }

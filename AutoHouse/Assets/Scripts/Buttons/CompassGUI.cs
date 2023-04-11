@@ -19,9 +19,9 @@ public class CompassGUI : MonoBehaviour
 
     private void Update()
     {
-        if (GridManager.TileRotation == 0) { image.sprite = _north; }
-        if (GridManager.TileRotation == 90) { image.sprite = _east; }
-        if (GridManager.TileRotation == 180) { image.sprite = _south; }
-        if (GridManager.TileRotation == 270) { image.sprite = _west; }
+        if (GameHotKeys.TileRotation == 0) { image.sprite = _north; }
+        if (GameHotKeys.TileRotation == 90) { image.sprite = _east; }
+        if (GameHotKeys.TileRotation == 180) { image.sprite = _south; }
+        if (GameHotKeys.TileRotation == 270) { image.sprite = _west; }
     }
 }

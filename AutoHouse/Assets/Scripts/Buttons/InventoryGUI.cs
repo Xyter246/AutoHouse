@@ -1,27 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class InventoryGUI : GameManager
 {
-    [SerializeField] private GameObject _coalInventory;
-    [SerializeField] private Text _coalAmountTXT;
-    [SerializeField] private Text _copperAmountTXT;
-    [SerializeField] private Text _goldAmountTXT;
-    [SerializeField] private Text _ironAmountTXT;
-    [SerializeField] private Text _stoneAmountTXT;
-    [SerializeField] private Text _woodAmountTXT;
+    [SerializeField] private TextMeshProUGUI _coalAmountTXT;
+    [SerializeField] private TextMeshProUGUI _copperAmountTXT;
+    [SerializeField] private TextMeshProUGUI _goldAmountTXT;
+    [SerializeField] private TextMeshProUGUI _ironAmountTXT;
+    [SerializeField] private TextMeshProUGUI _stoneAmountTXT;
+    [SerializeField] private TextMeshProUGUI _woodAmountTXT;
 
-    private void Start()
+    private void Update()
     {
-    //    _coalAmountTXT = _coalInventory.GetComponent<TextMeshPro>();   
-    }
-
-    private void OnEnable()
-    {
-    //    _coalAmountTXT = "Coal: " + AMOUNT_COAL.ToString();
+        _coalAmountTXT.text = "Coal: " + AMOUNT_COAL.ToString();
         _copperAmountTXT.text = "Copper: " + AMOUNT_COPPER.ToString();
         _goldAmountTXT.text = "Gold: " + AMOUNT_GOLD.ToString();
         _ironAmountTXT.text = "Iron: " + AMOUNT_IRON.ToString();

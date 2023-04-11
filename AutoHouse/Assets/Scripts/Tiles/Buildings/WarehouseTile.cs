@@ -1,29 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WarehouseTile : Tile
 {
-    [SerializeField] Item _coal;
-    [SerializeField] Item _copper;
-    [SerializeField] Item _gold;
-    [SerializeField] Item _iron;
-    [SerializeField] Item _stone;
-    [SerializeField] Item _wood;
+    [SerializeField] Sprite _coal;
+    [SerializeField] Sprite _copper;
+    [SerializeField] Sprite _gold;
+    [SerializeField] Sprite _iron;
+    [SerializeField] Sprite _stone;
+    [SerializeField] Sprite _wood;
 
     private void Update()
     {
-        List<GameObject> boxList = func.GetObjectsInBox(gameObject);
+        List<GameObject> boxList = func.GetObjectsInBox();
         foreach (var obj in boxList)
         {
-            Debug.Log(obj);
             if (obj.CompareTag("Items")) {
-                if (obj == _coal) { AMOUNT_COAL++; } else
-                if (obj == _copper) { AMOUNT_COPPER++; } else
-                if (obj == _gold) { AMOUNT_GOLD++; } else
-                if (obj == _iron) { AMOUNT_IRON++; } else
-                if (obj == _stone) { AMOUNT_STONE++; } else
-                if (obj == _wood) { AMOUNT_WOOD++; }
+                SpriteRenderer objSprite = obj.GetComponent<SpriteRenderer>();
+                if (objSprite.sprite == _coal) { AMOUNT_COAL++; } else
+                if (objSprite.sprite == _copper) { AMOUNT_COPPER++; } else
+                if (objSprite.sprite == _gold) { AMOUNT_GOLD++; } else
+                if (objSprite.sprite == _iron) { AMOUNT_IRON++; } else
+                if (objSprite.sprite == _stone) { AMOUNT_STONE++; } else
+                if (objSprite.sprite == _wood) { AMOUNT_WOOD++; }
                 Destroy(obj);
             }
         }

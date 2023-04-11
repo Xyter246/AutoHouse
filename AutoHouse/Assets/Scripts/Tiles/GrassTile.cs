@@ -32,7 +32,6 @@ public class GrassTile : Tile
                     UtilsClass.CreateWorldTextPopup("Not A Suitable Location! (Miners Can't Go On Grass)", func.GetMousePosition());
                 } else if (SelectedBuildingType == _conveyor) {
                     Destroy(gameObject);
-                    //gridManager.RotateTile();
                     Instantiate(SelectedBuildingType, transform.position, Quaternion.identity);
                 } else {
                     Destroy(gameObject);

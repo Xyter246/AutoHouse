@@ -1,0 +1,99 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using UnityEditor;
+using UnityEngine;
+
+public class GameHotKeys : GameManager
+{
+    // Declare/Reference Variables (statics don't show up in the Editor)
+    [SerializeField] private GameObject _playerBase;
+    [SerializeField] private GameObject _inventoryGUI;
+    public static int TileRotation;
+
+    // boolean for custom resource tile placement
+    [SerializeField] private bool _modularResources;
+    public static bool MODULAR_RESOURCES;
+
+    // Declare/Reference Different Buildings
+    [SerializeField] private Tile _assemblerTile;
+    [SerializeField] private Tile _warehouseTile;
+    [SerializeField] private Tile _conveyorTile;
+    [SerializeField] private Tile _minerTile;
+
+    // Declare/Reference Different Resource Tile
+    [SerializeField] private Tile _coalTile;
+    [SerializeField] private Tile _copperTile;
+    [SerializeField] private Tile _goldTile;
+    [SerializeField] private Tile _ironTile;
+    [SerializeField] private Tile _stoneTile;
+    [SerializeField] private Tile _woodTile;
+
+    private void Awake()
+    {
+        MODULAR_RESOURCES = _modularResources;
+    }
+
+    void Update()
+    {
+        // if not holding LeftShift
+        if (!Input.GetKey(KeyCode.LeftShift)) {
+
+            // If 'R' is pressed. Rotate SelectedBuildingType
+            if (Input.GetKeyDown(KeyCode.R)) {
+               // rotate the 'rotation variable' Clockwise
+               if (TileRotation == 0) { TileRotation = 90; } else
+               if (TileRotation == 90) { TileRotation = 180; } else
+               if (TileRotation == 180) { TileRotation = 270; } else
+               if (TileRotation == 270) { TileRotation = 0; }
+            }
+
+            // If 'P' is pressed. Switch between active states of Player
+            if (Input.GetKeyDown(KeyCode.P)) { func.SwitchActiveState(_playerBase); }
+            // If 'E' is pressed. Switch between active states of Player
+            if (Input.GetKeyDown(KeyCode.E)) { func.SwitchActiveState(_inventoryGUI); }
+            // If '1' is pressed. Select Assembler
+            if (Input.GetKeyDown(KeyCode.Alpha1)) { SelectedBuildingType = _assemblerTile; }
+            // If '2' is pressed. Select Warehouse
+            if (Input.GetKeyDown(KeyCode.Alpha2)) { SelectedBuildingType = _warehouseTile; }
+            // If '3' is pressed. Select Conveyor
+            if (Input.GetKeyDown(KeyCode.Alpha3)) { SelectedBuildingType = _conveyorTile; }
+            // If '4' is pressed. Select Miner
+            if (Input.GetKeyDown(KeyCode.Alpha4)) { SelectedBuildingType = _minerTile; }
+        }
+
+        #region ShiftKey
+        /////////////////////////////////////////////////
+        //                                             //
+        //-------For every Hotkey with any SHIFT-------//
+        //                                             //
+        /////////////////////////////////////////////////
+
+        if (Input.GetKey(KeyCode.LeftShift)) {
+            if (Input.GetKeyDown(KeyCode.R)) {
+                // rotate the 'rotation variable' Counter-Clockwise
+                if (TileRotation == 0) { TileRotation = 270; } else
+                if (TileRotation == 90) { TileRotation = 0; } else
+                if (TileRotation == 180) { TileRotation = 90; } else
+                if (TileRotation == 270) { TileRotation = 180; }
+            }
+
+            // Only allow these hotkeys is MODULAR_RESOURCES is enabled (default == true)
+            if (MODULAR_RESOURCES == true) {
+                // If 'Shift + 1' is pressed. Select Coal Tile
+                if (Input.GetKeyDown(KeyCode.Alpha1)) { SelectedBuildingType = _coalTile; }
+                // If 'Shift + 2' is pressed. Select Copper Tile
+                if (Input.GetKeyDown(KeyCode.Alpha2)) { SelectedBuildingType = _copperTile; }
+                // If 'Shift + 3' is pressed. Select Gold Tile
+                if (Input.GetKeyDown(KeyCode.Alpha3)) { SelectedBuildingType = _goldTile; }
+                // If 'Shift + 4' is pressed. Select Iron Tile
+                if (Input.GetKeyDown(KeyCode.Alpha4)) { SelectedBuildingType = _ironTile; }
+                // If 'Shift + 5' is pressed. Select Stone Tile
+                if (Input.GetKeyDown(KeyCode.Alpha5)) { SelectedBuildingType = _stoneTile; }
+                // If 'Shift + 6' is pressed. Select Wood Tile
+                if (Input.GetKeyDown(KeyCode.Alpha6)) { SelectedBuildingType = _woodTile; }
+            }
+        }
+        #endregion
+    }
+}

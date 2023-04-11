@@ -8,20 +8,18 @@ public class GameManager : MonoBehaviour
     protected static GridManager gridManager = new GridManager();
     protected static Tile _selectedBuildingType;
 
-    protected static int AMOUNT_COAL;
-    protected static int AMOUNT_COPPER;
-    protected static int AMOUNT_GOLD;
-    protected static int AMOUNT_IRON;
-    protected static int AMOUNT_STONE;
-    protected static int AMOUNT_WOOD;
+    // Static variables for resource amounts (can replace 'public' with 'protected' access modifier)
+    public static int AMOUNT_COAL = 0;
+    public static int AMOUNT_COPPER = 0;
+    public static int AMOUNT_GOLD = 0;
+    public static int AMOUNT_IRON = 0;
+    public static int AMOUNT_STONE = 0;
+    public static int AMOUNT_WOOD = 0;
 
-    public Tile SelectedBuildingType
+    // A GameManager Property called SelectedBuildingType, let's the user place and interact with certain Tiles
+    public static Tile SelectedBuildingType
     {
-        get {
-            return _selectedBuildingType;
-        }
-        set {
-            _selectedBuildingType = value;
-        }
+        get { return _selectedBuildingType; }
+        set { _selectedBuildingType = value; }
     }
 }
