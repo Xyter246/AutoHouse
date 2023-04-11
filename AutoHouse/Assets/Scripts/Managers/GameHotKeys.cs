@@ -9,6 +9,7 @@ public class GameHotKeys : GameManager
     // Declare/Reference Variables (statics don't show up in the Editor)
     [SerializeField] private GameObject _playerBase;
     [SerializeField] private GameObject _inventoryGUI;
+    [SerializeField] private GameObject _resourceButton;
     public static int TileRotation;
 
     // boolean for custom resource tile placement
@@ -48,10 +49,14 @@ public class GameHotKeys : GameManager
                if (TileRotation == 270) { TileRotation = 0; }
             }
 
-            // If 'P' is pressed. Switch between active states of Player
-            if (Input.GetKeyDown(KeyCode.P)) { func.SwitchActiveState(_playerBase); }
             // If 'E' is pressed. Switch between active states of Player
             if (Input.GetKeyDown(KeyCode.E)) { func.SwitchActiveState(_inventoryGUI); }
+            // If 'P' is pressed. Switch between active states of Player
+            if (Input.GetKeyDown(KeyCode.P)) { func.SwitchActiveState(_playerBase); }
+            // If 'M' is pressed and MODULAR_RESOURCES == true. Switch between Modular Resources
+            if (MODULAR_RESOURCES) { 
+                if (Input.GetKeyDown(KeyCode.M)) { func.SwitchActiveState(_resourceButton); } 
+            }
             // If '1' is pressed. Select Assembler
             if (Input.GetKeyDown(KeyCode.Alpha1)) { SelectedBuildingType = _assemblerTile; }
             // If '2' is pressed. Select Warehouse
@@ -95,5 +100,16 @@ public class GameHotKeys : GameManager
             }
         }
         #endregion
+        /////////////////////////////////////////////////
+        //                                             //
+        //-------------And Other Controls--------------//
+        //                                             //
+        /////////////////////////////////////////////////
+        ///
+        /// WASD for moving Player Character
+        /// Mouse Scroll Wheel for (Game) camera zoom in and out
+        /// Right Mouse Button to remove Tiles
+        /// Left Mouse Button to place selected Tiles
+        
     }
 }
