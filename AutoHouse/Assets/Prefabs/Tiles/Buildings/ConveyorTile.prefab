@@ -95,7 +95,7 @@ MonoBehaviour:
   _highlight: {fileID: 6076590618122392327}
   _conveyor: {fileID: 2031415754637253432}
   _conveyorSpeed: 0.5
-  _slightOffsetValue: 0.05
+  _conveyorWidth: 0.15
 --- !u!1 &6076590618122392327 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 870606275560556426, guid: f4ee5bbdb6df78b40acd715f6c828c8e, type: 3}

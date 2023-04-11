@@ -14,7 +14,7 @@ public class WarehouseTile : Tile
 
     private void Update()
     {
-        List<GameObject> boxList = func.GetObjectsInBox();
+        List<GameObject> boxList = func.GetObjectsInBox(gameObject);
         foreach (var obj in boxList)
         {
             if (obj.CompareTag("Items")) {

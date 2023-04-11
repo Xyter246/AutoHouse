@@ -1090,7 +1090,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerBase: {fileID: 189052565}
   _inventoryGUI: {fileID: 1484401853}
-  _modularResources: 1
+  _modularResources: 0
   _assemblerTile: {fileID: 8990001317196820111, guid: a8590dbc52cbe5a479d6717c3ffc978c, type: 3}
   _warehouseTile: {fileID: 5238966287926439566, guid: 407232c22daeff74a9869ff1ba95e0be, type: 3}
   _conveyorTile: {fileID: 2031415754637253432, guid: 1bff5926d67f98144ab655f453772538, type: 3}
