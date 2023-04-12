@@ -68,7 +68,11 @@ public class Functions : MonoBehaviour
         return gameObjects;
     }
 
-    public List<GameObject> GetObjectsInBox(GameObject? go = null, Vector2? _origin = null, Vector2? _boxSize = null, float? _angle = null)
+    public List<GameObject> GetObjectsInBox(
+        #nullable enable 
+        GameObject? go = null, 
+        #nullable disable 
+        Vector2? _origin = null, Vector2? _boxSize = null, float? _angle = null)
     {
         // If overloads aren't given
         if (_origin == null) { _origin = go.transform.position; }
