@@ -12,6 +12,7 @@ public class GameHotKeys : GameManager
     [SerializeField] private GameObject _resourceButton;
     [SerializeField] private GameObject _settingsGUI;
     [SerializeField] private GameObject _controlsGUI;
+    [SerializeField] private GameObject _techTreeGUI;
     public static int TileRotation;
 
     // boolean for custom resource tile placement
@@ -51,12 +52,14 @@ public class GameHotKeys : GameManager
                if (TileRotation == 270) { TileRotation = 0; }
             }
 
-            // If 'E' is pressed. Switch between open and closed of Inventory
+            // If 'E' is pressed. Open and close Inventory
             if (Input.GetKeyDown(KeyCode.E)) { InventoryButton.OnClick(); }
-            // If 'E' is pressed. Switch between open and closed of Resources
+            // If 'E' is pressed. Open and close Resources
             if (Input.GetKeyDown(KeyCode.F)) { ResourcesButton.OnClick(); }
             // If 'P' is pressed. Switch between active states of Player
             if (Input.GetKeyDown(KeyCode.P)) { func.SwitchActiveState(_playerBase); }
+            // If 'T' is pressed. Open and close the 'TechTree' (, not really a techtree) 
+            if (Input.GetKeyDown(KeyCode.T)) { func.SwitchActiveState(_techTreeGUI); }
             // If 'M' is pressed and MODULAR_RESOURCES == true. Switch between Modular Resources
             if (MODULAR_RESOURCES) { 
                 if (Input.GetKeyDown(KeyCode.M)) { func.SwitchActiveState(_resourceButton); } }
@@ -70,13 +73,13 @@ public class GameHotKeys : GameManager
                 else if (!_settingsGUI.activeInHierarchy) { _settingsGUI.SetActive(true); }
             }
             // If '1' is pressed. Select Assembler
-            if (Input.GetKeyDown(KeyCode.Alpha1)) { SelectedBuildingType = _assemblerTile; }
+            if (Input.GetKeyDown(KeyCode.Alpha1)) { SelectedBuildingType = _conveyorTile; }
             // If '2' is pressed. Select Warehouse
             if (Input.GetKeyDown(KeyCode.Alpha2)) { SelectedBuildingType = _warehouseTile; }
             // If '3' is pressed. Select Conveyor
-            if (Input.GetKeyDown(KeyCode.Alpha3)) { SelectedBuildingType = _conveyorTile; }
+            if (Input.GetKeyDown(KeyCode.Alpha3)) { SelectedBuildingType = _minerTile; }
             // If '4' is pressed. Select Miner
-            if (Input.GetKeyDown(KeyCode.Alpha4)) { SelectedBuildingType = _minerTile; }
+            if (Input.GetKeyDown(KeyCode.Alpha4)) { SelectedBuildingType = _assemblerTile; }
         }
 
         #region ShiftKey

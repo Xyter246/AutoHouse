@@ -50,6 +50,7 @@ public class Functions
     }
 
     #region "Checks Around Tiles"
+    // Dynamic Overload methods, ability to choose to give a variable. If not then they make their own
     public List<GameObject> GetObjectsOnMyDotPosition(GameObject go, Vector2? _slightOffset = null)    
     {
         // If _slightOffset isn't given
@@ -93,7 +94,6 @@ public class Functions
         return boxColliderList;
     }
 
-    // Dynamic Overload method, ability to choose color, or to not choose it
     public List<GameObject> GetRelativePosition(GameObject go, Vector2 _direction, Color? _color = null)
     {       
         if (_color == null) { _color = Color.red; }
@@ -112,12 +112,4 @@ public class Functions
         return gameObjects;
     }
     #endregion
-
-    public bool IsThisGameObjectLocked(GameObject gameobject)
-    {   
-        // if the gameobject has Locked (Child), then the gameObject must be Locked and should not be available
-        if (gameobject.transform.Find("Locked").gameObject != null) { return true; } 
-        // if it isn't locked, return false
-        else return false;
-    }
 }

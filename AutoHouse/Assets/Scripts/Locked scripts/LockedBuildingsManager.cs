@@ -17,10 +17,18 @@ public class LockedBuildingsManager : GameManager
 
     void Update()
     {
-        if (SelectedBuildingType == _assemblerTile && func.IsThisGameObjectLocked(_assemblerButton) == true) { SelectedBuildingType = null; }
-        if (SelectedBuildingType == _coalTile && func.IsThisGameObjectLocked(_coalButton) == true) { SelectedBuildingType = null; }
-        if (SelectedBuildingType == _copperTile && func.IsThisGameObjectLocked(_copperButton) == true) { SelectedBuildingType = null; }
-        if (SelectedBuildingType == _ironTile && func.IsThisGameObjectLocked(_ironButton) == true) { SelectedBuildingType = null; }
-        if (SelectedBuildingType == _goldTile && func.IsThisGameObjectLocked(_goldButton) == true) { SelectedBuildingType = null; }
+        if (SelectedBuildingType == _assemblerTile && IsThisGameObjectLocked(_assemblerButton)) { SelectedBuildingType = null; }
+        if (SelectedBuildingType == _coalTile && IsThisGameObjectLocked(_coalButton)) { SelectedBuildingType = null; }
+        if (SelectedBuildingType == _copperTile && IsThisGameObjectLocked(_copperButton)) { SelectedBuildingType = null; }
+        if (SelectedBuildingType == _ironTile && IsThisGameObjectLocked(_ironButton)) { SelectedBuildingType = null; }
+        if (SelectedBuildingType == _goldTile && IsThisGameObjectLocked(_goldButton)) { SelectedBuildingType = null; }
+    }
+
+    private bool IsThisGameObjectLocked(GameObject gameobject)
+    {
+        // if the gameobject has Locked (as a Child), then the gameObject must be Locked and should not be available
+        if (gameobject.transform.Find("Locked").gameObject != null) { return true; }
+        // if it isn't locked, return false
+        else return false;
     }
 }
