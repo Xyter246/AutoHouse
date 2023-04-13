@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour 
 {
-    protected static Functions func = new Functions();
-    protected static GridManager gridManager = new GridManager();
+    protected static Functions func = new ();
     protected static Tile _selectedBuildingType;
 
     // Static variables for resource amounts (can replace 'public' with 'protected' access modifier)

@@ -93,7 +93,7 @@ public class ConveyorTile : Tile
     {
         // Create Vectors, _conveyorDir must be (very recommended) orthogonal
         _conveyorDir = _conveyorDir.normalized;
-        Vector2 _conveyorBoxOrigin = 0.25f * _conveyorDir;
+        Vector2 _conveyorBoxOrigin = 0 * _conveyorDir;
         Vector2 _conveyorBoxSize = _conveyorDir;
 
         _conveyorBoxSize = CreateConveyorWidth(_conveyorBoxSize);
@@ -109,7 +109,7 @@ public class ConveyorTile : Tile
         // Create Vectors, _conveyorDir must be (very recommended) orthogonal
         _conveyorDir = _conveyorDir.normalized;
 
-        List<GameObject> gameObjects = func.GetRelativePosition(gameObject, -1 * _conveyorDir);
+        List<GameObject> gameObjects = func.GetRelativePosition(gameObject, -0.9f * _conveyorDir);
 
         // for every object found in a dot
         foreach (var obj in gameObjects) {

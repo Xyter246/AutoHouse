@@ -92,5 +92,5 @@ MonoBehaviour:
   _renderer: {fileID: 2972328996541379804}
   _replaceTile: {fileID: 7471173326427057435, guid: d31c08251077b014c9db1b6a1878215b, type: 3}
   _highlight: {fileID: 1261171938582099553}
-  _mineDuration: 5
+  _mineDuration: 8
   _ironItem: {fileID: 4964530974716090844, guid: 6a941155ec0f3d44d953c5e0c7ef31e6, type: 3}

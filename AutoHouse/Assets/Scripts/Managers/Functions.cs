@@ -2,12 +2,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Functions : MonoBehaviour
+public class Functions
 {
     public Vector2 GetRoundedMousePosition()
     {
         // Get mouse position in pixels
-        Vector2 screenPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        Vector2 screenPosition = new (Input.mousePosition.x, Input.mousePosition.y);
         // Transfer pixel location to world x and y
         Vector2 worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
         // Round x and y to nearest integer

@@ -6,14 +6,6 @@ using CodeMonkey.Utils;
 public class GrassTile : Tile
 {
     [SerializeField] private Color _baseColor, _offsetColor;
-    //[SerializeField] private Tile _assemblerTile;
-    //[SerializeField] private GameObject _assemblerHighlight;
-    //[SerializeField] private Tile _warehouseTile;
-    //[SerializeField] private GameObject _warehouseHighlight;
-    //[SerializeField] private Tile _conveyorTile;
-    //[SerializeField] private GameObject _conveyorHighlight;
-    //[SerializeField] private Tile _minerTile;
-    //[SerializeField] private GameObject _minerHighlight;
 
     public override void Init(int x, int y)
     { // Make the grass colors alternate like a chess board
@@ -47,10 +39,7 @@ public class GrassTile : Tile
 
     new private void OnMouseOver()
     { // placeholder, purpose is to NOT to something
-        //if (SelectedBuildingType == _assemblerTile) { }
-        //if (SelectedBuildingType == _warehouseTile) { }
-        //if (SelectedBuildingType == _conveyorTile) { }
-        //if (SelectedBuildingType == _minerTile) { }
+
     }
     #endregion 
 }

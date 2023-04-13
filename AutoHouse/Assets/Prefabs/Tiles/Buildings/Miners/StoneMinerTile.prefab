@@ -8,6 +8,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4363277017075023631, guid: db7523704d0676d4494420240f4bc647, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4363277017075023631, guid: db7523704d0676d4494420240f4bc647, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4363277017075023631, guid: db7523704d0676d4494420240f4bc647, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 16caa04ad0bff6b4bb112c3b4129327b, type: 3}
@@ -92,5 +100,5 @@ MonoBehaviour:
   _renderer: {fileID: 3932038723855995861}
   _replaceTile: {fileID: 7471173326427057435, guid: d31c08251077b014c9db1b6a1878215b, type: 3}
   _highlight: {fileID: 1021798324955844968}
-  _mineDuration: 3
+  _mineDuration: 5
   _stoneItem: {fileID: 6716783015276811748, guid: 45aae41d136bcdd479c5275b89f430c3, type: 3}

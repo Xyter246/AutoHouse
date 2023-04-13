@@ -51,8 +51,10 @@ public class GameHotKeys : GameManager
                if (TileRotation == 270) { TileRotation = 0; }
             }
 
-            // If 'E' is pressed. Switch between active states of Player
+            // If 'E' is pressed. Switch between open and closed of Inventory
             if (Input.GetKeyDown(KeyCode.E)) { InventoryButton.OnClick(); }
+            // If 'E' is pressed. Switch between open and closed of Resources
+            if (Input.GetKeyDown(KeyCode.F)) { ResourcesButton.OnClick(); }
             // If 'P' is pressed. Switch between active states of Player
             if (Input.GetKeyDown(KeyCode.P)) { func.SwitchActiveState(_playerBase); }
             // If 'M' is pressed and MODULAR_RESOURCES == true. Switch between Modular Resources

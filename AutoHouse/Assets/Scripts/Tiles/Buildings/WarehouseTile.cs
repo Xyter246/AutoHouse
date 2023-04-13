@@ -19,12 +19,12 @@ public class WarehouseTile : Tile
         {
             if (obj.CompareTag("Items")) {
                 SpriteRenderer objSprite = obj.GetComponent<SpriteRenderer>();
+                if (objSprite.sprite == _wood) { AMOUNT_WOOD++; } else
+                if (objSprite.sprite == _stone) { AMOUNT_STONE++; } else
                 if (objSprite.sprite == _coal) { AMOUNT_COAL++; } else
                 if (objSprite.sprite == _copper) { AMOUNT_COPPER++; } else
-                if (objSprite.sprite == _gold) { AMOUNT_GOLD++; } else
                 if (objSprite.sprite == _iron) { AMOUNT_IRON++; } else
-                if (objSprite.sprite == _stone) { AMOUNT_STONE++; } else
-                if (objSprite.sprite == _wood) { AMOUNT_WOOD++; }
+                if (objSprite.sprite == _gold) { AMOUNT_GOLD++; } 
                 Destroy(obj);
             }
         }
