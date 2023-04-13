@@ -38,35 +38,85 @@ public class ConveyorTile : Tile
     private void Update()
     {
         // Every frame, check on the back, main, and front part of every conveyorTile and move items if necessary
-        CheckAndMoveItems(_conveyorDir, _conveyorSpeed);
+        if (GRAEFF_MODE) { // in GRAEFFMODE
+            CheckAndMoveItemsGraeffMode(_conveyorDir, _conveyorSpeed);
+        } else { // or normally
+            CheckAndMoveItems(_conveyorDir, _conveyorSpeed);
+            CheckForMiner(_conveyorDir, _conveyorSpeed);
+        }
     }
 
-    private void CheckAndMoveItems(Vector2 _conveyorDir, float _conveyorSpeed)
+    private void MoveItemsInList(List<GameObject> gameObjects, Vector2 _conveyorDir, float? _conveyorSpeed = null)
     {
-        // Create Vectors
+        if (_conveyorSpeed == null) { _conveyorSpeed = 0.5f; }
+        foreach (var obj in gameObjects) {
+            GameObject go = obj.gameObject;
+            // Check if there are any Items
+            if (go.CompareTag("Items")) {
+                // If so, move them slightly
+                go.transform.position += Time.deltaTime * (float)_conveyorSpeed * (Vector3)_conveyorDir;
+            }
+        }
+    }
+
+    private void CheckAndMoveItemsGraeffMode(Vector2 _conveyorDir, float _conveyorSpeed)
+    {
+        // Create Vectors, _conveyorDir must be orthogonal
         _conveyorDir = _conveyorDir.normalized;
         Vector2 _conveyorBoxOrigin = -0.25f * _conveyorDir;
         Vector2 _conveyorBoxSize = 1.5f * _conveyorDir;
 
+        CreateConveyorWidth(_conveyorBoxSize);
+
+        // for every object found in an arbitrary box (rectangle more or less)...
+        List<GameObject> gameObjects = func.GetObjectsInBox(null, (Vector2)transform.position + _conveyorBoxOrigin, _conveyorBoxSize);
+        // Move them
+        MoveItemsInList(gameObjects, _conveyorDir, _conveyorSpeed);
+    }
+
+    private Vector2 CreateConveyorWidth(Vector2 _conveyorBoxSize)
+    {
         // Extra width for the 'box'
         switch (_conveyorBoxSize.x) {
             case 0: // If _conveyorBoxSize is in the Y direction, make X wider
                 _conveyorBoxSize.x += _conveyorWidth;
                 _conveyorBoxSize.y = Math.Abs(_conveyorBoxSize.y);
-                break;
+                return _conveyorBoxSize;
             default: // If _conveyorBoxSize is in the X direction, make Y wider
                 _conveyorBoxSize.y += _conveyorWidth;
                 _conveyorBoxSize.x = Math.Abs(_conveyorBoxSize.x);
-                break;
+                return _conveyorBoxSize;
         }
+    }
 
-        // for every object found in an arbitrary box (rectangle more or less)...
-        foreach (var obj in func.GetObjectsInBox(null, (Vector2)transform.position + _conveyorBoxOrigin, _conveyorBoxSize)) {
+    private void CheckAndMoveItems(Vector2 _conveyorDir, float _conveyorSpeed)
+    {
+        // Create Vectors, _conveyorDir must be (very recommended) orthogonal
+        _conveyorDir = _conveyorDir.normalized;
+        Vector2 _conveyorBoxOrigin = 0.25f * _conveyorDir;
+        Vector2 _conveyorBoxSize = _conveyorDir;
+
+        _conveyorBoxSize = CreateConveyorWidth(_conveyorBoxSize);
+
+        // for every object found in an arbitrary box...
+        List<GameObject> gameObjects = func.GetObjectsInBox(null, (Vector2)transform.position + _conveyorBoxOrigin, _conveyorBoxSize);
+        // Move them
+        MoveItemsInList(gameObjects, _conveyorDir, _conveyorSpeed);
+    }
+
+    private void CheckForMiner(Vector2 _conveyorDir, float _conveyorSpeed)
+    {
+        // Create Vectors, _conveyorDir must be (very recommended) orthogonal
+        _conveyorDir = _conveyorDir.normalized;
+
+        List<GameObject> gameObjects = func.GetRelativePosition(gameObject, -1 * _conveyorDir);
+
+        // for every object found in a dot
+        foreach (var obj in gameObjects) {
             GameObject go = obj.gameObject;
-            // Check if they are an Item
-            if (go.CompareTag("Items")) {
-                // If so, move them slightly
-                go.transform.position = Time.deltaTime * _conveyorSpeed * (Vector3)_conveyorDir + go.transform.position;
+            // If there is a minertile
+            if (go.CompareTag("MinerTile")) {
+                MoveItemsInList(gameObjects, _conveyorDir, _conveyorSpeed);
             }
         }
     }

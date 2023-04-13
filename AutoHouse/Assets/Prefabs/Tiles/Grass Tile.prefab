@@ -21,7 +21,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5759495260422937521, guid: f4ee5bbdb6df78b40acd715f6c828c8e, type: 3}
       propertyPath: m_Name
-      value: Tile 0 0
+      value: Tile 8 3
       objectReference: {fileID: 0}
     - target: {fileID: 6805440298661292512, guid: f4ee5bbdb6df78b40acd715f6c828c8e, type: 3}
       propertyPath: m_RootOrder
@@ -101,4 +101,3 @@ MonoBehaviour:
   _highlight: {fileID: 4019375899042807464}
   _baseColor: {r: 0.49019608, g: 0.7411765, b: 0.36862746, a: 1}
   _offsetColor: {r: 0.4, g: 0.6901961, b: 0.33333334, a: 1}
-  _conveyor: {fileID: 2031415754637253432, guid: 1bff5926d67f98144ab655f453772538, type: 3}

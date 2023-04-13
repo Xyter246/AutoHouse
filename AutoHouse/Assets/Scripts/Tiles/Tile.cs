@@ -24,7 +24,7 @@ public abstract class Tile : GameManager
                 Destroy(gameObject);
 
                 // Make a replace tile (grass) and name it accordingly "Tile [x] [y]"
-                _replaceTile.name = $"Tile {func.GetMousePosition().x} {func.GetMousePosition().y}";
+                _replaceTile.name = $"Tile {func.GetRoundedMousePosition().x} {func.GetRoundedMousePosition().y}";
                 Instantiate(_replaceTile, transform.position, Quaternion.identity);
             }
         }
@@ -34,7 +34,7 @@ public abstract class Tile : GameManager
     {   // Only execute if not over UI
         if (!func.IsCursorOverUIObject() && SelectedBuildingType != null) {
             // If you click on a any tile that isn't made to have something placed on it (like buildings), log that
-            UtilsClass.CreateWorldTextPopup("Not A Suitable Location! (Something is already there!)", func.GetMousePosition());
+            UtilsClass.CreateWorldTextPopup("Not A Suitable Location! (Something is already there!)", func.GetRoundedMousePosition());
         }
     }
 

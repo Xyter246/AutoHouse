@@ -6,7 +6,14 @@ using CodeMonkey.Utils;
 public class GrassTile : Tile
 {
     [SerializeField] private Color _baseColor, _offsetColor;
-    [SerializeField] private Tile _conveyor;
+    //[SerializeField] private Tile _assemblerTile;
+    //[SerializeField] private GameObject _assemblerHighlight;
+    //[SerializeField] private Tile _warehouseTile;
+    //[SerializeField] private GameObject _warehouseHighlight;
+    //[SerializeField] private Tile _conveyorTile;
+    //[SerializeField] private GameObject _conveyorHighlight;
+    //[SerializeField] private Tile _minerTile;
+    //[SerializeField] private GameObject _minerHighlight;
 
     public override void Init(int x, int y)
     { // Make the grass colors alternate like a chess board
@@ -18,7 +25,7 @@ public class GrassTile : Tile
     {   // if grass tile was not made with GenerateGrid(), then get for Mouse position to check offset
         if (Time.timeSinceLevelLoadAsDouble > 0)
         {
-            Init((int)func.GetMousePosition().x, (int)func.GetMousePosition().y);
+            Init((int)func.GetRoundedMousePosition().x, (int)func.GetRoundedMousePosition().y);
         }
     }
 
@@ -29,10 +36,7 @@ public class GrassTile : Tile
             // If you click on (open) grass tile, place SelectedBuildingType on that location
             if (SelectedBuildingType != null) {
                 if (SelectedBuildingType == SelectedBuildingType.CompareTag("MinerTile")) {
-                    UtilsClass.CreateWorldTextPopup("Not A Suitable Location! (Miners Can't Go On Grass)", func.GetMousePosition());
-                } else if (SelectedBuildingType == _conveyor) {
-                    Destroy(gameObject);
-                    Instantiate(SelectedBuildingType, transform.position, Quaternion.identity);
+                    UtilsClass.CreateWorldTextPopup("Not A Suitable Location! (Miners Can't Go On Grass)", func.GetRoundedMousePosition());
                 } else {
                     Destroy(gameObject);
                     Instantiate(SelectedBuildingType, transform.position, Quaternion.identity);
@@ -43,7 +47,10 @@ public class GrassTile : Tile
 
     new private void OnMouseOver()
     { // placeholder, purpose is to NOT to something
-
+        //if (SelectedBuildingType == _assemblerTile) { }
+        //if (SelectedBuildingType == _warehouseTile) { }
+        //if (SelectedBuildingType == _conveyorTile) { }
+        //if (SelectedBuildingType == _minerTile) { }
     }
     #endregion 
 }

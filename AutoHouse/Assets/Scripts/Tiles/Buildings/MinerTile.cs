@@ -8,7 +8,7 @@ public class MinerTile : Tile
     protected bool Mine(Item _resourceItem, float _mineDuration)
     {
             // Checks if there isn't an item already
-        if (func.GetObjectsOnMyDotPosition(gameObject).Count == 1) {
+        if (func.GetObjectsOnMyDotPosition(gameObject).Count <= 2) {
             // Checks if it's time to create an Item
             if ((Time.time % _mineDuration) <= Time.deltaTime) {
                 Instantiate(_resourceItem, transform.position + Vector3.back, Quaternion.identity);

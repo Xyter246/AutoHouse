@@ -10,6 +10,8 @@ public class GameHotKeys : GameManager
     [SerializeField] private GameObject _playerBase;
     [SerializeField] private GameObject _inventoryGUI;
     [SerializeField] private GameObject _resourceButton;
+    [SerializeField] private GameObject _settingsGUI;
+    [SerializeField] private GameObject _controlsGUI;
     public static int TileRotation;
 
     // boolean for custom resource tile placement
@@ -50,12 +52,20 @@ public class GameHotKeys : GameManager
             }
 
             // If 'E' is pressed. Switch between active states of Player
-            if (Input.GetKeyDown(KeyCode.E)) { func.SwitchActiveState(_inventoryGUI); }
+            if (Input.GetKeyDown(KeyCode.E)) { InventoryButton.OnClick(); }
             // If 'P' is pressed. Switch between active states of Player
             if (Input.GetKeyDown(KeyCode.P)) { func.SwitchActiveState(_playerBase); }
             // If 'M' is pressed and MODULAR_RESOURCES == true. Switch between Modular Resources
             if (MODULAR_RESOURCES) { 
-                if (Input.GetKeyDown(KeyCode.M)) { func.SwitchActiveState(_resourceButton); } 
+                if (Input.GetKeyDown(KeyCode.M)) { func.SwitchActiveState(_resourceButton); } }
+            // If 'ESC' (Escape) is pressed...
+            if (Input.GetKeyDown(KeyCode.Escape)) { 
+                // ...deactivate Controls GUI, else
+                if (_controlsGUI.activeInHierarchy) { _controlsGUI.SetActive(false); }
+                // ...or deactivate Settings GUI, else
+                else if (_settingsGUI.activeInHierarchy) { _settingsGUI.SetActive(false); }
+                // ...or active Settings GUI
+                else if (!_settingsGUI.activeInHierarchy) { _settingsGUI.SetActive(true); }
             }
             // If '1' is pressed. Select Assembler
             if (Input.GetKeyDown(KeyCode.Alpha1)) { SelectedBuildingType = _assemblerTile; }
@@ -85,18 +95,18 @@ public class GameHotKeys : GameManager
 
             // Only allow these hotkeys is MODULAR_RESOURCES is enabled (default == true)
             if (MODULAR_RESOURCES == true) {
-                // If 'Shift + 1' is pressed. Select Coal Tile
-                if (Input.GetKeyDown(KeyCode.Alpha1)) { SelectedBuildingType = _coalTile; }
-                // If 'Shift + 2' is pressed. Select Copper Tile
-                if (Input.GetKeyDown(KeyCode.Alpha2)) { SelectedBuildingType = _copperTile; }
-                // If 'Shift + 3' is pressed. Select Gold Tile
-                if (Input.GetKeyDown(KeyCode.Alpha3)) { SelectedBuildingType = _goldTile; }
-                // If 'Shift + 4' is pressed. Select Iron Tile
-                if (Input.GetKeyDown(KeyCode.Alpha4)) { SelectedBuildingType = _ironTile; }
-                // If 'Shift + 5' is pressed. Select Stone Tile
-                if (Input.GetKeyDown(KeyCode.Alpha5)) { SelectedBuildingType = _stoneTile; }
-                // If 'Shift + 6' is pressed. Select Wood Tile
-                if (Input.GetKeyDown(KeyCode.Alpha6)) { SelectedBuildingType = _woodTile; }
+                // If 'Shift + 1' is pressed. Select Wood Tile
+                if (Input.GetKeyDown(KeyCode.Alpha1)) { SelectedBuildingType = _woodTile; }
+                // If 'Shift + 2' is pressed. Select Stone Tile
+                if (Input.GetKeyDown(KeyCode.Alpha2)) { SelectedBuildingType = _stoneTile; }
+                // If 'Shift + 3' is pressed. Select Coal Tile
+                if (Input.GetKeyDown(KeyCode.Alpha3)) { SelectedBuildingType = _coalTile; }
+                // If 'Shift + 4' is pressed. Select Copper Tile
+                if (Input.GetKeyDown(KeyCode.Alpha4)) { SelectedBuildingType = _copperTile; }
+                // If 'Shift + 5' is pressed. Select Iron Tile
+                if (Input.GetKeyDown(KeyCode.Alpha5)) { SelectedBuildingType = _ironTile; }
+                // If 'Shift + 6' is pressed. Select Gold Tile
+                if (Input.GetKeyDown(KeyCode.Alpha6)) { SelectedBuildingType = _goldTile; }
             }
         }
         #endregion

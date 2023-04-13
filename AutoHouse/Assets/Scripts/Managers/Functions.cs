@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 public class Functions : MonoBehaviour
 {
-    public Vector2 GetMousePosition()
+    public Vector2 GetRoundedMousePosition()
     {
         // Get mouse position in pixels
         Vector2 screenPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);

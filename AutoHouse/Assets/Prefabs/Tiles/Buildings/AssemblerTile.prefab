@@ -31,9 +31,13 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0.6666667
       objectReference: {fileID: 0}
+    - target: {fileID: 5753700036680887913, guid: f4ee5bbdb6df78b40acd715f6c828c8e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 5759495260422937521, guid: f4ee5bbdb6df78b40acd715f6c828c8e, type: 3}
       propertyPath: m_Name
-      value: Assembler Tile
+      value: AssemblerTile
       objectReference: {fileID: 0}
     - target: {fileID: 5759495260422937521, guid: f4ee5bbdb6df78b40acd715f6c828c8e, type: 3}
       propertyPath: m_TagString
