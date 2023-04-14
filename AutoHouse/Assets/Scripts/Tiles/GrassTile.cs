@@ -28,7 +28,8 @@ public class GrassTile : Tile
             // If you click on (open) grass tile, place SelectedBuildingType on that location
             if (SelectedBuildingType != null) {
                 if (SelectedBuildingType == SelectedBuildingType.CompareTag("MinerTile")) {
-                    UtilsClass.CreateWorldTextPopup("Not A Suitable Location! (Miners Can't Go On Grass)", func.GetRoundedMousePosition());
+                    //... Or display an error message when miner is selected
+                    UtilsClass.CreateWorldTextPopup("Not a Suitable Location \n(Miners can't go on Grass!)", func.GetRoundedMousePosition(), 4f);
                 } else {
                     Destroy(gameObject);
                     Instantiate(SelectedBuildingType, transform.position, Quaternion.identity);

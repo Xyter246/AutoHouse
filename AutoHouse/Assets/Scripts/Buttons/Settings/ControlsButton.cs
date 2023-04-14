@@ -8,6 +8,7 @@ public class ControlsButton : GameManager
 
     public void OnClick()
     {
+        // If Clicked, enable or disable Controls GUI
         func.SwitchActiveState(_controlsGUI);
     }
 }

@@ -6,6 +6,7 @@ public class AssemblerUnlock : GameManager
 {
     [SerializeField] private GameObject _assemblerButton;
     [SerializeField] private GameObject _assemblerUnlock;
+    [SerializeField] private GameObject _storyEndGUI;
     private GameObject _locked;
 
     public void OnClick()
@@ -22,6 +23,9 @@ public class AssemblerUnlock : GameManager
             // Actually remove the Lock
             _locked = _assemblerButton.transform.Find("Locked").gameObject;
             Destroy(_locked);
+
+            // Open up the last GUI for the "story"...
+            _storyEndGUI.SetActive(true);
         }
     }
 }

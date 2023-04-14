@@ -8,6 +8,7 @@ public class MinerButton : GameManager
 
     public void OnClick()
     {
+        // If button is clicked, select the correct building
         SelectedBuildingType = _buildingType;
     }
 }

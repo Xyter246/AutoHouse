@@ -3,6 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+////////////////////////////////////////////////////////////////////////
+///                                                                  ///
+/// This Script is currently Unused, but kept for future endeavours. ///
+///                                                                  ///
+////////////////////////////////////////////////////////////////////////
+
 public class GameTickSystem : MonoBehaviour
 {
     private void Awake()

@@ -7,6 +7,7 @@ public class QuitGameButton : MonoBehaviour
 {
     public void OnClick()
     {
+        // Close Application
         Application.Quit();
     }
 }

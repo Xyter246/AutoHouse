@@ -38,9 +38,9 @@ public class ConveyorTile : Tile
     private void Update()
     {
         // Every frame, check on the back, main, and front part of every conveyorTile and move items if necessary
-        if (GRAEFF_MODE) { // in GRAEFFMODE
+        if (GRAEFF_MODE) { // ..in GRAEFFMODE
             CheckAndMoveItemsGraeffMode(_conveyorDir, _conveyorSpeed);
-        } else { // or normally
+        } else { // ..or normally
             CheckAndMoveItems(_conveyorDir, _conveyorSpeed);
             CheckForMiner(_conveyorDir, _conveyorSpeed);
         }

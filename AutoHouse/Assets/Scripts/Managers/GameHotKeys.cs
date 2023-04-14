@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using UnityEditor;
+
 using UnityEngine;
 
 public class GameHotKeys : GameManager
@@ -13,6 +12,7 @@ public class GameHotKeys : GameManager
     [SerializeField] private GameObject _settingsGUI;
     [SerializeField] private GameObject _controlsGUI;
     [SerializeField] private GameObject _techTreeGUI;
+    [SerializeField] private GameObject _introductionGUI;
     public static int TileRotation;
 
     // boolean for custom resource tile placement
@@ -31,11 +31,13 @@ public class GameHotKeys : GameManager
     [SerializeField] private Tile _goldTile;
     [SerializeField] private Tile _ironTile;
     [SerializeField] private Tile _stoneTile;
-    [SerializeField] private Tile _woodTile;
+    [SerializeField] private Tile _woodTile;    
 
     private void Awake()
     {
+        // Set the static variable to the serialized variable
         MODULAR_RESOURCES = _modularResources;
+        _introductionGUI.SetActive(true);
     }
 
     void Update()
@@ -58,20 +60,27 @@ public class GameHotKeys : GameManager
             if (Input.GetKeyDown(KeyCode.F)) { ResourcesButton.OnClick(); }
             // If 'P' is pressed. Switch between active states of Player
             if (Input.GetKeyDown(KeyCode.P)) { func.SwitchActiveState(_playerBase); }
-            // If 'T' is pressed. Open and close the 'TechTree' (, not really a techtree) 
-            if (Input.GetKeyDown(KeyCode.T)) { func.SwitchActiveState(_techTreeGUI); }
+            // If 'T' is pressed. And Controls GUI isn't already enabled. Enable or disable the 'TechTree' (, sadly not really a techtree) 
+            if (!_controlsGUI.activeInHierarchy) {
+                if (Input.GetKeyDown(KeyCode.T)) { func.SwitchActiveState(_techTreeGUI); }
+            }
             // If 'M' is pressed and MODULAR_RESOURCES == true. Switch between Modular Resources
             if (MODULAR_RESOURCES) { 
-                if (Input.GetKeyDown(KeyCode.M)) { func.SwitchActiveState(_resourceButton); } }
+                if (Input.GetKeyDown(KeyCode.M)) { func.SwitchActiveState(_resourceButton); } 
+            }
+
             // If 'ESC' (Escape) is pressed...
             if (Input.GetKeyDown(KeyCode.Escape)) { 
-                // ...deactivate Controls GUI, else
+                // ...deactivate Controls GUI,
                 if (_controlsGUI.activeInHierarchy) { _controlsGUI.SetActive(false); }
-                // ...or deactivate Settings GUI, else
-                else if (_settingsGUI.activeInHierarchy) { _settingsGUI.SetActive(false); }
+                // ...or deactivate Tech Tree GUI, 
+                else if (_techTreeGUI.activeInHierarchy) { _techTreeGUI.SetActive(false); }
+                // ...or deactivate Settings GUI, 
+                else if (_settingsGUI.activeInHierarchy) { SettingsButton.OnClick(); }
                 // ...or active Settings GUI
-                else if (!_settingsGUI.activeInHierarchy) { _settingsGUI.SetActive(true); }
+                else if (!_settingsGUI.activeInHierarchy) { SettingsButton.OnClick(); }
             }
+
             // If '1' is pressed. Select Assembler
             if (Input.GetKeyDown(KeyCode.Alpha1)) { SelectedBuildingType = _conveyorTile; }
             // If '2' is pressed. Select Warehouse

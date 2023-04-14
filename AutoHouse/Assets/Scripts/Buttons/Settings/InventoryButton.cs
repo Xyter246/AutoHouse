@@ -14,6 +14,8 @@ public class InventoryButton : GameManager
     // Method to access the toggle value
     public void NewInventoryGUIToggle(bool _newInventoryGUIToggle) {
         NEW_INVENTORY_MODE = _newInventoryGUIToggle;
+        inventoryGUI.SetActive(false);
+        inventoryGUI2.SetActive(false);
     }
 
     private void Awake()

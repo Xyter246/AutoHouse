@@ -20,6 +20,7 @@ public class InventoryGUI : GameManager
 
     private void Update()
     {
+        // Keeps Old and New Inventory modes stocked up with current inventory data
         if (NEW_INVENTORY_MODE) {
             _woodAmountTXT2.text = "Wood: " + AMOUNT_WOOD.ToString();
             _stoneAmountTXT2.text = "Stone: " + AMOUNT_STONE.ToString();

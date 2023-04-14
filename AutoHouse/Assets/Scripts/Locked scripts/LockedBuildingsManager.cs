@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class LockedBuildingsManager : GameManager
@@ -17,6 +19,7 @@ public class LockedBuildingsManager : GameManager
 
     void Update()
     {
+        // For every Locked Item, if it is selected and still locked, selected nothing instead
         if (SelectedBuildingType == _assemblerTile && IsThisGameObjectLocked(_assemblerButton)) { SelectedBuildingType = null; }
         if (SelectedBuildingType == _coalTile && IsThisGameObjectLocked(_coalButton)) { SelectedBuildingType = null; }
         if (SelectedBuildingType == _copperTile && IsThisGameObjectLocked(_copperButton)) { SelectedBuildingType = null; }
@@ -26,9 +29,11 @@ public class LockedBuildingsManager : GameManager
 
     private bool IsThisGameObjectLocked(GameObject gameobject)
     {
-        // if the gameobject has Locked (as a Child), then the gameObject must be Locked and should not be available
-        if (gameobject.transform.Find("Locked").gameObject != null) { return true; }
-        // if it isn't locked, return false
-        else return false;
+        try {
+            // if the gameobject has Locked (as a Child), then the gameObject must be Locked and should not be available
+            if (gameobject.transform.Find("Locked").gameObject != null) { return true; }
+        } catch (NullReferenceException) { } // Stop NullReferenceExeption from logging itself in Unity Console
+        // if it isn't locked, and thus got to the end of this method, return false
+        return false;
     }
 }

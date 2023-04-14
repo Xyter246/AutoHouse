@@ -8,7 +8,7 @@ public class IronMinerTile : MinerTile
     [SerializeField] private Item _ironItem;
 
     private void Update()
-    {       // Find 'Mine(parameters)' on MinerTile.cs
+    {       // Find 'Mine()' on MinerTile.cs
         Mine(_ironItem, _mineDuration);
     }
 

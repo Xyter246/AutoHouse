@@ -34,13 +34,14 @@ public abstract class Tile : GameManager
     {   // Only execute if not over UI
         if (!func.IsCursorOverUIObject() && SelectedBuildingType != null) {
             // If you click on a any tile that isn't made to have something placed on it (like buildings), log that
-            UtilsClass.CreateWorldTextPopup("Not A Suitable Location! (Something is already there!)", func.GetRoundedMousePosition());
+            UtilsClass.CreateWorldTextPopup("Not A Suitable Location! \n(Something is already there!)", func.GetRoundedMousePosition(), 4f);
         }
     }
 
     #endregion
 
     #region "Highlighting Tiles"
+    // Standard Highlighting logic, works for every Tile, although sometimes barely noticable (Conveyor mostly)
     void OnMouseEnter()
     {
         _highlight.SetActive(true);

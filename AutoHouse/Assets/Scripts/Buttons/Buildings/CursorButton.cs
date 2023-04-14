@@ -6,6 +6,7 @@ public class CursorButton : GameManager
 {
     public void OnClick()
     {
+        // If button is clicked, select nothing
         SelectedBuildingType = null;
     }
 }

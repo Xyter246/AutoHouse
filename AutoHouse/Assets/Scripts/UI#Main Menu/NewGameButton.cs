@@ -8,6 +8,7 @@ public class NewGameButton : MonoBehaviour
     [SerializeField] private string _newGameWorld;
     public void OnClick()
     {
+        // If New Game is clicked, load the actual Game (World)
         SceneManager.LoadScene(_newGameWorld);
     }
 }

@@ -9,7 +9,7 @@ public class MainMenuHotKeys : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) {
-            // ...deactivate Controls GUI, else
+            // ...deactivate Controls GUI if opened
             if (_controlsGUI.activeInHierarchy) { _controlsGUI.SetActive(false); }
         }
     }

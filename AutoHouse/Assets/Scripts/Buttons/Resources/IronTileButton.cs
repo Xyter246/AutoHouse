@@ -8,6 +8,7 @@ public class IronTileButton : GameManager
 
     public void OnClick()
     {
+        // If button is clicked, select the correct ore
         SelectedBuildingType = _oreType;
     }
 }

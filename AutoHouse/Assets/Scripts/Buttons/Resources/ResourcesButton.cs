@@ -10,11 +10,13 @@ public class ResourcesButton : GameManager
 
     private void Awake()
     {
+        // set the public static variable equal to the private serializable variable
         RESOURCEBUTTONCHILD = _resourceButtonChild;
     }
 
     public static void OnClick()
     {
+        // If button is clicked, activate or deactive the ore tiles menu
         func.SwitchActiveState(RESOURCEBUTTONCHILD);
     }
 }

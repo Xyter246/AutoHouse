@@ -8,6 +8,7 @@ public class TechTreeButton : GameManager
 
     public void OnClick()
     {
+        // If button is clicked, open or close Tech Tree GUI
         func.SwitchActiveState(_techTreeGUI);
     }
 }

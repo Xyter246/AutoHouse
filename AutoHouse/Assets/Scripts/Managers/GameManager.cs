@@ -8,12 +8,12 @@ public class GameManager : MonoBehaviour
     protected static Tile _selectedBuildingType;
 
     // Static variables for resource amounts (can replace 'public' with 'protected' access modifier)
-    public static int AMOUNT_WOOD = 990;
-    public static int AMOUNT_STONE = 990;
-    public static int AMOUNT_COAL = 990;
-    public static int AMOUNT_COPPER = 990;
-    public static int AMOUNT_IRON = 990;
-    public static int AMOUNT_GOLD = 990;
+    public static int AMOUNT_WOOD = 0;
+    public static int AMOUNT_STONE = 0;
+    public static int AMOUNT_COAL = 0;
+    public static int AMOUNT_COPPER = 0;
+    public static int AMOUNT_IRON = 0;
+    public static int AMOUNT_GOLD = 0;
     
     // Global Setting variables
     public static bool NEW_INVENTORY_MODE;

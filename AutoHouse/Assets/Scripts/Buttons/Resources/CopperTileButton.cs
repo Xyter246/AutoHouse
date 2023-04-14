@@ -8,6 +8,7 @@ public class CopperTileButton : GameManager
 
     public void OnClick()
     {
+        // If button is clicked, select the correct ore
         SelectedBuildingType = _oreType;
     }
 }

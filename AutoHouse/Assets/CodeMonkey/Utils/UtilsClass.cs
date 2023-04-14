@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 namespace CodeMonkey.Utils {
 
@@ -119,7 +120,7 @@ namespace CodeMonkey.Utils {
 
         // Create a Text Popup in the World, no parent
         public static void CreateWorldTextPopup(string text, Vector3 localPosition, float popupTime = 2f) {
-            CreateWorldTextPopup(null, text, localPosition, 6, Color.white, localPosition + new Vector3(0, 5), popupTime);
+            CreateWorldTextPopup(null, text, localPosition, 8, Color.white, localPosition + new Vector3(0, 3), popupTime);
         }
         
         // Create a Text Popup in the World

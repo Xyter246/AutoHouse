@@ -12,6 +12,7 @@ public class ResourceTile : Tile
             Destroy(gameObject);
             Instantiate(x, transform.position, Quaternion.identity);
         } else {
+            // If resource Tile clicked but Miner not selected, display error message at mouse cursor
             UtilsClass.CreateWorldTextPopup("Not A Suitable Location! (Miners Only)", func.GetRoundedMousePosition()); ;
         }
     }
