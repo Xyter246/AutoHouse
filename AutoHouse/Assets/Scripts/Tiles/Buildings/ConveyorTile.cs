@@ -64,7 +64,8 @@ public class ConveyorTile : Tile
         // Create Vectors, _conveyorDir must be orthogonal
         _conveyorDir = _conveyorDir.normalized;
         Vector2 _conveyorBoxOrigin = -0.25f * _conveyorDir;
-        Vector2 _conveyorBoxSize = 1.5f * _conveyorDir;
+        // Create Box Size using the Absolute math function. Otherwise it could be negative size and not work at all
+        Vector2 _conveyorBoxSize = new(Math.Abs(1.5f * _conveyorDir.x), Math.Abs(1.5f * _conveyorDir.y));
 
         CreateConveyorWidth(_conveyorBoxSize);
 
